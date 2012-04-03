@@ -11,7 +11,16 @@ filetype indent on
 set autoread
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost _vimrc source ~/_vimrc
+autocmd! bufwritepost vimrc source ~/vim_local/vimrc
+
+let mapleader=","
+let g:mapleader=","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Fast editing of vimrc
+map <leader>e :e! ~/vim_local/vimrc<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
@@ -34,6 +43,9 @@ set hlsearch
 
 " Highlight all results
 set incsearch
+
+" Commandbar height
+set cmdheight=2
 
 " Always show position
 set ruler
@@ -95,6 +107,7 @@ endtry
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -106,6 +119,43 @@ set tw=500
 set ai
 set si
 set wrap
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Search for current selection on * or #
+vnoremap <silent> * :call VisualSearch('f')<CR>
+vnoremap <silent> # :call VisualSearch('b')<CR>
+
+" Press gv to vimgrep after the selected text
+vnoremap <silent> gv :call VisualSearch('gv')<CR>
+map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+function! VisualSearch(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern . "^M"
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
@@ -128,7 +178,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ 
 
 
 function! CurDir()
-    let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+    let curdir = substitute(getcwd(), 'C:/Users/mdentremont', "~/", "g")
     return curdir
 endfunction
 
@@ -157,7 +207,7 @@ if MySys() == "mac"
   vmap <D-k> <M-k>
 endif
 
-"Delete trailing white space, useful for Python ;)
+"Delete trailing white space
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
