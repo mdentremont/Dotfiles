@@ -9,6 +9,6 @@ set t_Co=256
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GVIM Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme relaxedgreen
+colorscheme tango
 
 set gfn=Consolas:h10

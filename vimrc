@@ -207,6 +207,7 @@ func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
+  retab
 endfunc
 autocmd BufWrite *.qml :call DeleteTrailingWS()
 autocmd BufWrite *.cpp :call DeleteTrailingWS()
@@ -215,3 +216,4 @@ autocmd BufWrite *.xml :call DeleteTrailingWS()
 autocmd BufWrite *.pro :call DeleteTrailingWS()
 
 set guitablabel=%t
+
