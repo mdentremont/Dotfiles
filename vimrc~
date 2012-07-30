@@ -1,26 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Special
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Used for editing the templated git commit message
-au filetype gitcommit nmap <Tab> /[<CR>cf]
-au filetype gitcommit imap <Tab> <Esc><Tab>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=700
-
-" Keep Windows cut shortcuts
-vnoremap <C-X> "+x
-vnoremap <S-DEL> "+x
-
-" Keep Windows copy shortcuts
-vnoremap <C-C> "+y
-vnoremap <C-Insert> "+y
-
-" Keep Windows paste shortcuts
-imap <C-V> <C-R>+
 
 " Enable filetype plugin
 filetype plugin on
@@ -108,7 +89,7 @@ set ffs=unix,dos,mac
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set backup
-set backupdir=~/.vim/backup
+backupdir=~/.vim/backup
 
 set noswapfile
 
