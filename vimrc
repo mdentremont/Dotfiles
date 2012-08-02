@@ -1,10 +1,5 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Special
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Used for editing the templated git commit message
-au filetype gitcommit nmap <Tab> /[<CR>cf]
-au filetype gitcommit imap <Tab> <Esc><Tab>
-
+" Enable pathogen
+call pathogen#infect('~/vim_local/bundle')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
