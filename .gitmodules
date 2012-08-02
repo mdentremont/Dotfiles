@@ -1,0 +1,3 @@
+[submodule "bundle/vim-changehelper"]
+	path = bundle/vim-changehelper
+	url = https://github.rim.net/rwooden/vim-changehelper
