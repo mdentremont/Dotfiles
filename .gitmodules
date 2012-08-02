@@ -1,3 +1,6 @@
 [submodule "bundle/vim-changehelper"]
 	path = bundle/vim-changehelper
 	url = https://github.rim.net/rwooden/vim-changehelper
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
