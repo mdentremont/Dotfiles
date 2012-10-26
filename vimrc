@@ -1,21 +1,41 @@
 " Enable pathogen
 call pathogen#infect('~/vim_local/bundle')
 
+source C:/Users/mdentremont/Git/search-cs/misc/git/topicmerge.vim
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=700
 
-" Keep Windows cut shortcuts
+" CTRL-X and SHIFT-Del are Cut
 vnoremap <C-X> "+x
-vnoremap <S-DEL> "+x
+vnoremap <S-Del> "+x
 
-" Keep Windows copy shortcuts
+" CTRL-C and CTRL-Insert are Copy
 vnoremap <C-C> "+y
 vnoremap <C-Insert> "+y
 
-" Keep Windows paste shortcuts
-imap <C-V> <C-R>+
+" CTRL-V and SHIFT-Insert are Paste
+map <C-V> "+gP
+map <S-Insert> "+gP
+
+cmap <C-V> <C-R>+
+cmap <S-Insert> <C-R>+
+
+" Pasting blockwise and linewise selections is not possible in Insert and
+" Visual mode without the +virtualedit feature.  They are pasted as if they
+" were characterwise instead.
+" Uses the paste.vim autoload script.
+
+exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
+exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
+
+imap <S-Insert> <C-V>
+vmap <S-Insert> <C-V>
+
+" Use CTRL-Q to do what CTRL-V used to do
+noremap <C-Q> <C-V>
 
 " Enable filetype plugin
 filetype plugin on
@@ -91,6 +111,8 @@ set tm=500
 syntax enable
 
 set background=dark
+
+colorscheme olive
 
 " No line numbers
 set nonu

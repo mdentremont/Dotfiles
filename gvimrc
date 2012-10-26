@@ -6,7 +6,6 @@ set guioptions-=T
 
 set t_Co=256
 
-
 set columns=120
 set lines=30
 
