@@ -91,6 +91,9 @@ set magic
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
+" Show relative line numbers
+set relativenumber
+
 " Show matching braces
 set showmatch
 
