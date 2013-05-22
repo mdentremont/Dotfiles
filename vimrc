@@ -1,7 +1,14 @@
+set nocompatible
+filetype off
+
+" Source the vundle config
+source ~/vim_local/vundle.vim
+
 " Enable pathogen
 call pathogen#infect('~/vim_local/bundle')
+call pathogen#infect('~/vim_local/manual')
 
-source C:/Users/mdentremont/Git/search-cs/misc/git/topicmerge.vim
+source ~/Git/search-cs/misc/git/topicmerge.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -37,6 +44,19 @@ vmap <S-Insert> <C-V>
 " Use CTRL-Q to do what CTRL-V used to do
 noremap <C-Q> <C-V>
 
+" Move around windows
+nmap <c-l> l
+nmap <c-h> h
+nmap <c-k> k
+nmap <c-j> j
+"map <C-a> 
+
+" Switch tabs
+nmap <C-Tab> gt
+imap <C-Tab> <Esc>gt
+nmap <C-S-Tab> gT
+imap <C-S-Tab> <Esc>gT
+
 " Enable filetype plugin
 filetype plugin on
 filetype indent on
@@ -45,7 +65,7 @@ filetype indent on
 set autoread
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/vim_local/vimrc
+autocmd! bufwritepost vimrc runtime _vimrc
 
 let mapleader=","
 let g:mapleader=","
