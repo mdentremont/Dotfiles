@@ -2,18 +2,40 @@ set nocompatible
 filetype off
 
 " Source the vundle config
-source ~/vim_local/vundle.vim
+source ~/.vim/vundle.vim
 
 " Enable pathogen
-call pathogen#infect('~/vim_local/bundle')
-call pathogen#infect('~/vim_local/manual')
+call pathogen#infect('~/.vim/bundle')
+call pathogen#infect('~/.vim/manual')
 
-source ~/Git/search-cs/misc/git/topicmerge.vim
+source ~/git/search-cs/misc/git/topicmerge.vim
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => GVIM Specific
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if has('gui_running')
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " GVIM UI
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Hide toolbar
+    set guioptions-=T
+
+    "set columns=120
+    "set lines=30
+
+endif
+
+let g:Powerline_symbols = 'fancy'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=700
+
+" Use comma as the leader
+let mapleader=","
+let g:mapleader=","
 
 " CTRL-X and SHIFT-Del are Cut
 vnoremap <C-X> "+x
@@ -44,11 +66,26 @@ vmap <S-Insert> <C-V>
 " Use CTRL-Q to do what CTRL-V used to do
 noremap <C-Q> <C-V>
 
+" Disable Ex Mode
+nnoremap Q :
+
+" Disable Search Highlighting
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
+
+" Gundo
+nnoremap <F5> :GundoToggle<CR>
+
+"Tagbar
+nnoremap <F4> :TagbarToggle<CR>
+
+" NERDTree
+nnoremap <F3> :NERDTreeToggle<CR>
+
 " Move around windows
-nmap <c-l> l
-nmap <c-h> h
-nmap <c-k> k
-nmap <c-j> j
+nmap <C-l> l
+nmap <C-h> h
+nmap <C-k> k
+nmap <C-j> j
 "map <C-a> 
 
 " Switch tabs
@@ -56,6 +93,9 @@ nmap <C-Tab> gt
 imap <C-Tab> <Esc>gt
 nmap <C-S-Tab> gT
 imap <C-S-Tab> <Esc>gT
+
+" CtrlP buffer list
+nnoremap <Space> :CtrlPBuffer<CR>
 
 " Enable filetype plugin
 filetype plugin on
@@ -65,16 +105,16 @@ filetype indent on
 set autoread
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost vimrc runtime _vimrc
-
-let mapleader=","
-let g:mapleader=","
+augroup reloadVimRc " {
+    autocmd!
+    autocmd BufWritePost .vimrc,_vimrc,vimrc source %
+augroup END " }
 
 " Fast saving
 nmap <leader>w :w!<cr>
 
 " Fast editing of vimrc
-map <leader>e :e! ~/vim_local/vimrc<cr>
+map <leader>e :e! ~/.vim/vimrc<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
@@ -103,6 +143,12 @@ set cmdheight=2
 
 " Always show position
 set ruler
+
+" Show line breaks
+set showbreak=→
+
+" Highlight trailing whitespace
+match ErrorMsg '\s\+$'
 
 " Have to excape magic chars (except "(,)" and "|"
 set magic
@@ -133,9 +179,14 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
+set t_Co=256
 
-colorscheme olive
+set background=dark
+colorscheme molokai
+
+
+" Enable powerline
+set guifont=Liberation\ Mono\ for\ Powerline\ 10
 
 " No line numbers
 set nonu
@@ -157,7 +208,7 @@ try
     if MySys() == "windows"
       set undodir=%TMP%
     else
-      set undodir=~/.vim_runtime/undodir
+      set undodir=~/.vim/undodir
     endif
 
     set undofile
@@ -173,8 +224,13 @@ set shiftwidth=4
 set tabstop=4
 set smarttab
 
-set lbr
-set tw=500
+set linebreak
+
+" list disables linebreak
+set nolist
+"set tw=500
+set textwidth=0
+set wrapmargin=0
 
 set ai
 set si
@@ -250,10 +306,10 @@ set statusline+=\ %P    "percent through file
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <m-j> mz:m+<cr>`z
+nmap <m-k> mz:m-2<cr>`z
+vmap <m-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <m-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if MySys() == "mac"
   nmap <D-j> <M-j>
@@ -269,10 +325,14 @@ func! DeleteTrailingWS()
   exe "normal `z"
   retab
 endfunc
-autocmd BufWrite *.qml :call DeleteTrailingWS()
-autocmd BufWrite *.cpp :call DeleteTrailingWS()
-autocmd BufWrite *.hpp :call DeleteTrailingWS()
-autocmd BufWrite *.pro :call DeleteTrailingWS()
+
+augroup deleteWS " {
+    autocmd!
+    autocmd BufWrite *.qml :call DeleteTrailingWS()
+    autocmd BufWrite *.cpp :call DeleteTrailingWS()
+    autocmd BufWrite *.hpp :call DeleteTrailingWS()
+    autocmd BufWrite *.pro :call DeleteTrailingWS()
+augroup END " }
 
 set guitablabel=%t
 
