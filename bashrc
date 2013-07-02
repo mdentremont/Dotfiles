@@ -147,3 +147,6 @@ export PATH="$PATH:~/bbndk/"
 
 set -o vi
 
+zsh
+
+
