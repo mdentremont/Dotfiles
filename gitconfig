@@ -1,0 +1,77 @@
+[core]
+	autocrlf = input
+    editor = ~/bin/vimwrapper.sh
+    filemode = false
+[gui]
+    recentrepo = ~/git/search-cs2
+[user]
+    email = mdentremont@blackberry.com
+    name = Matt d'Entremont
+[merge]
+    summary = true
+    keepBackup = false
+#    tool = "p4merge"
+[mergetool]
+    prompt = false
+    keepBackup = false
+#[mergetool "p4merge"]
+#    path = "C:/Program Files/Perforce/p4merge.exe"
+    #cmd = "p4merge.exe $BASE $LOCAL $REMOTE $MERGED"
+    #keepBackup = false
+    #keepTemporaries = false
+    #trustExitCode = true
+#[diff]
+#    tool = "p4merge"
+[difftool]
+    prompt = false
+[alias]
+    a = "add"
+    b = "branch"
+    ci = "commit"
+    cl = "clean --force -X -d --exclude=\"misc/CascadesDocs\" --exclude=\"*/buildspec.out\" --exclude=\"deps\""
+    co = "checkout"
+    cp = "cherry-pick"
+    d = "diff"
+    dc = "diff --cached"
+    dt = "difftool"
+    dtc = "difftool --cached"
+    f = "fetch --prune"
+    fa = "fetch --all --prune"
+    fixup = "commit --amend --no-edit"
+    l = "log --graph"
+    lp = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+    m = "merge"
+    mt = "mergetool"
+    p = "push origin HEAD:refs/for/"
+    pl = "pull"
+    ps = "push"
+    r = "rm"
+    rb = "rebase"
+    s = "status"
+    su = "submodule update --init --recursive"
+    t = "tag"
+    ws = "diff --check"
+    desk = "stash"
+
+# David Gageot's wip/unwip & more (https://gist.github.com/492227)
+# [alias]
+    wip = !"git add --all; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m \"DRAFT - WIP \n\nJobs:\n 0000000\""
+    unwip = !"git log -n 1 | grep -q -c 'DRAFT - WIP' && git reset HEAD~1"
+
+    rewip = !"git checkout master && git pull && git checkout $1 && git unwip && git wip && git rebase master"
+
+    #rebase on origin master
+    rbo = !"git wip;git rebase -i origin/master;git unwip"
+    pr = !"git fetch;git wip;git rebase --stat origin;git unwip;git heads"
+    head = !"git log -n1"
+    #lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
+[rerere]
+    enabled = true
+[push]
+    default = upstream
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
