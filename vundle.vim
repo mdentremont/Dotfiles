@@ -5,31 +5,32 @@ call vundle#rc("~/.vim/bundle")
 " required!
 Bundle 'gmarik/vundle'
 
-"" To disable a plugin, add it's bundle name to the following list
-"let g:pathogen_disabled = []
-"
-"if !has('gui_running')
-"    call add(g:pathogen_disabled, 'vim-powerline')
-"endif
-
 " My Bundles here:
 "
 " original repos on github
 Bundle 'corntrace/bufexplorer.git'
-Bundle 'dantler/vim-alternate.git'
-Bundle 'edsono/vim-matchit.git'
 Bundle 'ervandew/supertab.git'
+Bundle 'jnurmine/Zenburn.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'majutsushi/tagbar.git'
+Bundle 'matze/vim-move.git'
+Bundle 'peterhoeg/vim-qml.git'
+Bundle 'rygwdn/tagswitch.git'
 Bundle 'SirVer/ultisnips.git'
+Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'sjl/gundo.vim.git'
 Bundle 'tomasr/molokai.git'
+Bundle 'takac/vim-hardtime.git'
 Bundle 'tpope/vim-abolish.git'
 Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-repeat.git'
+Bundle 'tpope/vim-surround.git'
 Bundle 'Valloric/YouCompleteMe.git'
+Bundle 'vimoutliner/vimoutliner.git'
+Bundle 'vim-scripts/matchit.zip.git'
 
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'

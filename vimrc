@@ -21,81 +21,18 @@ if has('gui_running')
     " Hide toolbar
     set guioptions-=T
 
-    "set columns=120
-    "set lines=30
+    " Disable window key shortcuts
+    set winaltkeys=no
 
 endif
-
-let g:Powerline_symbols = 'fancy'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=700
 
-" Use comma as the leader
-let mapleader=","
-let g:mapleader=","
-
-" CTRL-X and SHIFT-Del are Cut
-vnoremap <C-X> "+x
-vnoremap <S-Del> "+x
-
-" CTRL-C and CTRL-Insert are Copy
-vnoremap <C-C> "+y
-vnoremap <C-Insert> "+y
-
-" CTRL-V and SHIFT-Insert are Paste
-map <C-V> "+gP
-map <S-Insert> "+gP
-
-cmap <C-V> <C-R>+
-cmap <S-Insert> <C-R>+
-
-" Pasting blockwise and linewise selections is not possible in Insert and
-" Visual mode without the +virtualedit feature.  They are pasted as if they
-" were characterwise instead.
-" Uses the paste.vim autoload script.
-
-exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
-exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
-
-imap <S-Insert> <C-V>
-vmap <S-Insert> <C-V>
-
-" Use CTRL-Q to do what CTRL-V used to do
-noremap <C-Q> <C-V>
-
-" Disable Ex Mode
-nnoremap Q :
-
-" Disable Search Highlighting
-nnoremap <silent> <Leader>/ :nohlsearch<CR>
-
-" Gundo
-nnoremap <F5> :GundoToggle<CR>
-
-"Tagbar
-nnoremap <F4> :TagbarToggle<CR>
-
-" NERDTree
-nnoremap <F3> :NERDTreeToggle<CR>
-
-" Move around windows
-nmap <C-l> l
-nmap <C-h> h
-nmap <C-k> k
-nmap <C-j> j
-"map <C-a> 
-
-" Switch tabs
-nmap <C-Tab> gt
-imap <C-Tab> <Esc>gt
-nmap <C-S-Tab> gT
-imap <C-S-Tab> <Esc>gT
-
-" CtrlP buffer list
-nnoremap <Space> :CtrlPBuffer<CR>
+" Hide a buffer instead of closing (don't lose unsaved changes!)
+set hidden
 
 " Enable filetype plugin
 filetype plugin on
@@ -104,17 +41,8 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" When vimrc is edited, reload it
-augroup reloadVimRc " {
-    autocmd!
-    autocmd BufWritePost .vimrc,_vimrc,vimrc source %
-augroup END " }
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-" Fast editing of vimrc
-map <leader>e :e! ~/.vim/vimrc<cr>
+" Add BBNDK tags to the tags list
+set tags=./tags/;/,$GIT_HOME/tags;/
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
@@ -147,6 +75,12 @@ set ruler
 " Show line breaks
 set showbreak=→
 
+" Don't show the mode as powerline already does this
+set noshowmode
+
+" Enable mouse
+set mouse=nvr
+
 " Highlight trailing whitespace
 match ErrorMsg '\s\+$'
 
@@ -164,7 +98,15 @@ set relativenumber
 set showmatch
 
 " How many tenths of a second to blink
-set mat=2
+set mat=1
+
+" Folding settings {{{
+set foldcolumn=0
+set foldenable
+set foldlevel=0
+set foldmethod=marker
+set foldtext=FoldText()
+" }}}
 
 " No error bells
 set noerrorbells
@@ -181,17 +123,18 @@ syntax enable
 
 set t_Co=256
 
+"if !has('gui_running')
+"    let g:rehash256 = 1
+"endif
+
 set background=dark
-colorscheme molokai
-
-
-" Enable powerline
-set guifont=Liberation\ Mono\ for\ Powerline\ 10
+colorscheme wombat
 
 " No line numbers
 set nonu
 
 set encoding=utf8
+set termencoding=utf-8
 
 set ffs=unix,dos,mac
 
@@ -236,53 +179,6 @@ set ai
 set si
 set wrap
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Search for current selection on * or #
-vnoremap <silent> * :call VisualSearch('f')<CR>
-vnoremap <silent> # :call VisualSearch('b')<CR>
-
-" Press gv to vimgrep after the selected text
-vnoremap <silent> gv :call VisualSearch('gv')<CR>
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
-function! VisualSearch(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern . "^M"
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Command mode related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Tab configuration
-map <leader>tn :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
 """"""""""""""""""""""""""""""
 " => Statusline
 """"""""""""""""""""""""""""""
@@ -295,44 +191,15 @@ set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}] "file format
 set statusline+=%y      "filetype
 " Buf number, help file, modified, read only, preview window flag
-set statusline+=[%n%H%M%R%W]%*\  
+set statusline+=[%n%H%M%R%W]%*\
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <m-j> mz:m+<cr>`z
-nmap <m-k> mz:m-2<cr>`z
-vmap <m-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <m-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if MySys() == "mac"
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
-"Delete trailing white space
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-  retab
-endfunc
-
-augroup deleteWS " {
-    autocmd!
-    autocmd BufWrite *.qml :call DeleteTrailingWS()
-    autocmd BufWrite *.cpp :call DeleteTrailingWS()
-    autocmd BufWrite *.hpp :call DeleteTrailingWS()
-    autocmd BufWrite *.pro :call DeleteTrailingWS()
-augroup END " }
-
 set guitablabel=%t
+
+" Source viminit files {{{
+runtime! config/**/*.vim
+" }}}
 
