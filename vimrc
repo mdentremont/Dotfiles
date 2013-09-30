@@ -1,12 +1,7 @@
 set nocompatible
-filetype off
 
 " Source the vundle config
 source ~/.vim/vundle.vim
-
-" Enable pathogen
-call pathogen#infect('~/.vim/bundle')
-call pathogen#infect('~/.vim/manual')
 
 source ~/git/search-cs/misc/git/topicmerge.vim
 
@@ -51,9 +46,6 @@ set tags=./tags/;/,$GIT_HOME/tags;/
 " Only scroll at the border
 set so=0
 
-" Bash-like tab completion on file/command names
-set wildmenu
-
 " Ignore case when searching
 set ignorecase
 
@@ -63,14 +55,8 @@ set smartcase
 " Highlight next search result
 set hlsearch
 
-" Highlight all results
-set incsearch
-
 " Commandbar height
 set cmdheight=2
-
-" Always show position
-set ruler
 
 " Show line breaks
 set showbreak=→
@@ -88,7 +74,6 @@ match ErrorMsg '\s\+$'
 set magic
 
 " Set backspace config
-set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
 " Show relative line numbers
@@ -127,8 +112,8 @@ set t_Co=256
 "    let g:rehash256 = 1
 "endif
 
-set background=dark
-colorscheme wombat
+set background=light
+colorscheme summerfruit256
 
 " No line numbers
 set nonu
@@ -165,9 +150,8 @@ endtry
 set expandtab
 set shiftwidth=4
 set tabstop=4
-set smarttab
 
-set linebreak
+set nolinebreak
 
 " list disables linebreak
 set nolist
@@ -175,15 +159,12 @@ set nolist
 set textwidth=0
 set wrapmargin=0
 
-set ai
-set si
+set smartindent
 set wrap
 
 """"""""""""""""""""""""""""""
 " => Statusline
 """"""""""""""""""""""""""""""
-" Always hide the statusline
-set laststatus=2
 
 " Format the statusline
 set statusline=%t       "tail of the filename
@@ -200,6 +181,7 @@ set statusline+=\ %P    "percent through file
 set guitablabel=%t
 
 " Source viminit files {{{
+runtime! config/*.vim
 runtime! config/**/*.vim
 " }}}
 
