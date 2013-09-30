@@ -1,14 +1,11 @@
 # Bash aliases
 alias ls='ls --color'
 alias o='open "$@"'
-alias scasutils='$GIT_HOME/search-cs/misc/scasutils.sh'
-alias enable_dev_mode='$GIT_HOME/search-cs/misc/scasutils.sh enable_dev_mode'
-alias rm_search='$GIT_HOME/search-cs/misc/scasutils.sh rm_search'
 alias bdt='bdt.py'
-alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont" --rtasPassword='"'"'%X!Sntn6jb'"'"
+alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont"'
 
 function gv { ( gvim -f "$@" & ) &>/dev/null ; }
-complete -r gv 
+#complete -r gv 
 
 # Git aliases
 alias g="git"
@@ -39,5 +36,5 @@ gmod () {
     [[ -z "$1" ]] && files="$(cd $path ; git status --porcelain | sed 's/^ *[^ ]* *//' | sort -u)"
     [[ -z $files ]] && files="$(cd $path; git diff-tree --no-commit-id --name-only -r ${1:-HEAD})"
     files=$(echo "$files" | sed "s!^!$path/!" | grep -v '/images/' | while read line ; do file "$line" | grep -q '\btext\b' && echo $line ; done)
-    g $(echo "$files" | xargs echo)
+    gv $(echo "$files" | xargs echo)
 }

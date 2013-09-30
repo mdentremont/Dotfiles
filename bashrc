@@ -143,9 +143,10 @@ export CSEARCHINDEX=$GERRIT_CLONES/.csearchindex
 
 [[ -e /usr/bin/ccache ]] && export CCWRAP=ccache
 
-export PATH="$PATH:~/bbndk/"
-
 set -o vi
+
+# Use Alt+. to insert argument from previous commands
+bind '"\e."':yank-last-arg
 
 zsh
 
