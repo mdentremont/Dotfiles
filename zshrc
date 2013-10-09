@@ -45,6 +45,9 @@ ZSH_THEME="girazz"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(command-not-found git jira pip vi-mode vim-mode virtualenvwrapper zsh-syntax-highlighting zsh-history-substring-search)
 
+# fpath must be configured before the aliases are set
+fpath=(~/git/dev-scripts $fpath)
+
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_aliases
 

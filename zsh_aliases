@@ -1,11 +1,16 @@
 # Bash aliases
+
+[ ! -f ~/git/dev-scripts/bdt_aliases ] || source ~/git/dev-scripts/bdt_aliases
+
 alias ls='ls --color'
 alias o='open "$@"'
-alias bdt='bdt.py'
 alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont"'
 
 function gv { ( gvim -f "$@" & ) &>/dev/null ; }
 compdef gv=gvim
+
+# Fix ag colours
+alias ag='ag --color-line="0;33" --color-path="0;32"'
 
 # Git aliases
 alias g="git"

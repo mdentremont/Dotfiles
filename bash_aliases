@@ -1,7 +1,6 @@
 # Bash aliases
 alias ls='ls --color'
 alias o='open "$@"'
-alias bdt='bdt.py'
 alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont"'
 
 function gv { ( gvim -f "$@" & ) &>/dev/null ; }
