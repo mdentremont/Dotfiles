@@ -9,6 +9,11 @@ if !filereadable(vundle_readme)
     echo ""
     silent !mkdir -p ~/.vim/bundle
     silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    if has("unix")
+        echo "Installing patched fonts"
+        git clone https://github.com/Lokaltog/powerline-fonts ~/.fonts
+        fc-cache -vf ~/.fonts
+    endif
     let iCanHazVundle=0
 endif
 
@@ -25,15 +30,16 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
+Bundle 'bling/vim-airline.git'
 Bundle 'corntrace/bufexplorer.git'
 Bundle 'ervandew/supertab.git'
 Bundle 'jnurmine/Zenburn.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'Lokaltog/vim-easymotion.git'
-Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'majutsushi/tagbar.git'
 Bundle 'matze/vim-move.git'
 Bundle 'peterhoeg/vim-qml.git'
+Bundle 'Raimondi/delimitMate.git'
 Bundle 'rygwdn/tagswitch.git'
 Bundle 'rygwdn/qmake-syntax-vim.git'
 Bundle 'rking/ag.vim'
@@ -43,7 +49,6 @@ Bundle 'scrooloose/nerdtree.git'
 Bundle 'sjl/gundo.vim.git'
 Bundle 'tomasr/molokai.git'
 Bundle 'tpope/vim-abolish.git'
-Bundle 'tpope/vim-endwise.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'tpope/vim-sensible.git'

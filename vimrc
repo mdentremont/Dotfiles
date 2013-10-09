@@ -61,7 +61,7 @@ set cmdheight=2
 " Show line breaks
 set showbreak=→
 
-" Don't show the mode as powerline already does this
+" Don't show the mode as airline already does this
 set noshowmode
 
 " Enable mouse
