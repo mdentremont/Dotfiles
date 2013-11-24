@@ -4,3 +4,5 @@ ignore = [
     '.git',
     '.gitignore'
     '.DS_Store']
+packages = [
+    'oh-my-zsh']
