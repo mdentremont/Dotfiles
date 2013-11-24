@@ -2,6 +2,7 @@
 	autocrlf = input
     editor = ~/bin/vimwrapper.sh
     filemode = false
+    excludesfile = /Users/mattdentremont/.gitignore_global
 [gui]
     recentrepo = ~/git/search-cs2
 [user]
