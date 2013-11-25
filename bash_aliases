@@ -3,6 +3,11 @@ alias ls='ls --color'
 alias o='open "$@"'
 alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont"'
 
+# Use apt-fast if it exists
+if type "apt-fast" > /dev/null; then
+    alias apt-get="apt-fast"
+fi
+
 function gv { ( gvim -f "$@" & ) &>/dev/null ; }
 #complete -r gv 
 
