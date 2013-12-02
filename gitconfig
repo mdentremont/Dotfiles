@@ -1,6 +1,6 @@
 [core]
 	autocrlf = input
-    editor = ~/bin/vimwrapper.sh
+    editor = vim
     filemode = false
     excludesfile = /Users/mattdentremont/.gitignore_global
 [gui]
@@ -48,7 +48,7 @@
 
 # David Gageot's wip/unwip & more (https://gist.github.com/492227)
 # [alias]
-    wip = !"git add --all; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m \"DRAFT - WIP \n\nJobs:\n 0000000\""
+    wip = !"git add --all; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m \"DRAFT - WIP\""
     unwip = !"git log -n 1 | grep -q -c 'DRAFT - WIP' && git reset HEAD~1"
 
     rewip = !"git checkout master && git pull && git checkout $1 && git unwip && git wip && git rebase master"
