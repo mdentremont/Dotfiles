@@ -46,10 +46,20 @@ ZSH_THEME="girazz"
 #
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(command-not-found git jira pip vi-mode vim-mode virtualenvwrapper zsh-syntax-highlighting zsh-history-substring-search)
+plugins=(git pip vi-mode vim-mode zsh-syntax-highlighting zsh-history-substring-search)
 
-# fpath must be configured before the aliases are set
-fpath=(~/git/dev-scripts $fpath)
+# Platform dependent configs
+if [[ `uname` == 'Linux' ]]
+then
+    plugins=(command-not-found $plugins)
+elif [[ `uname` == 'Darwin' ]]
+    # Enable ZSH completion on mac
+    fpath=(/usr/local/share/zsh-completions $fpath)
+
+    plugins=(brew $plugins)
+then
+else # Might as well assume Windows here
+fi
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_aliases
