@@ -2,7 +2,10 @@
 
 [ ! -f ~/git/dev-scripts/bdt_aliases ] || source ~/git/dev-scripts/bdt_aliases
 
-alias ls='ls --color'
+if [[ `uname` != 'Darwin' ]]
+then
+    alias ls='ls --color'
+fi
 alias o='open "$@"'
 alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont"'
 
@@ -13,6 +16,7 @@ fi
 
 function gv { ( gvim -f "$@" & ) &>/dev/null ; }
 compdef gv=gvim
+compdef vi=vim
 
 # Fix ag colours
 alias ag='ag --color-line="0;33" --color-path="0;32"'
