@@ -4,7 +4,7 @@ alias o='open "$@"'
 alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont"'
 
 # Use apt-fast if it exists
-if type "apt-fast" > /dev/null; then
+if hash apt-fast 2>/dev/null; then
     alias apt-get="apt-fast"
 fi
 
