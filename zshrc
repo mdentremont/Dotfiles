@@ -13,11 +13,17 @@ elif [[ `uname` == 'Darwin' ]]
     then
         # Add android SDK to path if it exists
         path+=("$ADT_LOCATION")
-        export PATH
     fi
 then
 else # Might as well assume Windows here
 fi
+
+if [ -d "$HOME/bin" ]
+then
+    path=($HOME/bin $path)
+fi
+
+export PATH
 
 HISTSIZE=10000
 SAVEHIST=10000
