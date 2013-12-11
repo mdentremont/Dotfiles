@@ -37,7 +37,7 @@ export KEYTIMEOUT=1
 [ -z $HOST ] && export HOST=`hostname`
 
 # Source all configs
-for file in $(find ~/.zsh.d -type f | sort)
+for file in $(find ~/.zsh.d/ -type f | sort)
 do
     source $file
 done
