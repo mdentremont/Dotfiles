@@ -56,6 +56,14 @@ elif [[ `uname` == 'Darwin' ]]
     # Enable ZSH completion on mac
     fpath=(/usr/local/share/zsh-completions $fpath)
 
+    local ADT_LOCATION="$HOME/development/adt-bundle-mac-x86_64-20131030/sdk/platform-tools"
+    if [ -d "$ADT_LOCATION" ]
+    then
+        # Add android SDK to path if it exists
+        path+=("$ADT_LOCATION")
+        export PATH
+    fi
+
     plugins=(brew $plugins)
 then
 else # Might as well assume Windows here
