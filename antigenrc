@@ -1,0 +1,26 @@
+antigen use oh-my-zsh
+
+# oh-my-zsh plugins
+antigen bundle git
+antigen bundle pip
+antigen bundle vi-mode
+
+# Non oh-my-zsh plugins
+antigen bundle v17al/zsh-vim-mode
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Platform dependant bundles
+if [[ `uname` == 'Linux' ]]
+then
+    antigen bundle command-not-found
+elif [[ `uname` == 'Darwin' ]]
+then
+    antigen bundle brew
+fi
+
+# Non oh-my-zsh theme
+antigen theme v17al/girazz
+
+antigen apply
+

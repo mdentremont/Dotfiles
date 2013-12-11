@@ -16,7 +16,6 @@ fi
 
 function gv { ( gvim -f "$@" & ) &>/dev/null ; }
 compdef gv=gvim
-compdef vi=vim
 
 # Fix ag colours
 alias ag='ag --color-line="0;33" --color-path="0;32"'
