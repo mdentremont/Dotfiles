@@ -3,8 +3,6 @@ set nocompatible
 " Source the vundle config
 source ~/.vim/vundle.vim
 
-source ~/git/search-cs/misc/git/topicmerge.vim
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GVIM Specific
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -18,6 +16,11 @@ if has('gui_running')
 
     " Disable window key shortcuts
     set winaltkeys=no
+
+    if MySys() == "mac"
+        " Treat Alt/Option as meta in MacVim
+        set macmeta
+    endif
 
 endif
 
