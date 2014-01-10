@@ -4,6 +4,7 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle pip
 antigen bundle vi-mode
+antigen bundle virtualenvwrapper
 
 # Non oh-my-zsh plugins
 antigen bundle v17al/zsh-vim-mode
