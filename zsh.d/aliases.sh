@@ -14,44 +14,47 @@ if hash apt-fast 2>/dev/null; then
     alias apt-get="apt-fast"
 fi
 
-function gv { ( gvim -f "$@" & ) &>/dev/null ; }
-compdef gv=gvim
-
 # Fix ag colours
 alias ag='ag --color-line="0;33" --color-path="0;32"'
 
-# Git aliases
-alias g="git"
+# Only set git aliases if git exists
+if hash git 2>/dev/null; then
+    function gv { ( gvim -f "$@" & ) &>/dev/null ; }
+    compdef gv=gvim
 
-alias gb="git b"
+    # Git aliases
+    alias g="git"
 
-alias gd="git diff"
+    alias gb="git b"
 
-alias gdc="git diff --cached"
+    alias gd="git diff"
 
-alias gg="git gui&"
+    alias gdc="git diff --cached"
 
-alias gl="git l"
+    alias gg="git gui&"
 
-alias glp="git lp"
+    alias gl="git l"
 
-alias gs="git status"
+    alias glp="git lp"
 
-function gmod {
-    local _path=$(git rev-parse --show-toplevel || pwd)
-    local _files=
+    alias gs="git status"
 
-    # changed files
-    #echo "1: $1"
-    [[ -z "$1" ]] && _files="$(cd $_path ; git status --porcelain | sed 's/^ *[^ ]* *//' | sort -u)"
-    #echo "f1: $_files"
+    function gmod {
+        local _path=$(git rev-parse --show-toplevel || pwd)
+        local _files=
 
-    # files changed in HEAD
-    [[ -z $_files ]] && _files="$(cd $_path; git diff-tree --no-commit-id --name-only -r ${1:-HEAD})"
-    #echo "f2: $_files"
-    _files=$(echo "$_files" | sed "s!^!$_path/!" | grep -v '/images/' | while read line ; do file "$line" | grep -q '\btext\b' && echo $line ; done)
-    #echo "f3: $_files"
+        # changed files
+        #echo "1: $1"
+        [[ -z "$1" ]] && _files="$(cd $_path ; git status --porcelain | sed 's/^ *[^ ]* *//' | sort -u)"
+        #echo "f1: $_files"
 
-    gv $(echo "$_files" | xargs echo)
-}
+        # files changed in HEAD
+        [[ -z $_files ]] && _files="$(cd $_path; git diff-tree --no-commit-id --name-only -r ${1:-HEAD})"
+        #echo "f2: $_files"
+        _files=$(echo "$_files" | sed "s!^!$_path/!" | grep -v '/images/' | while read line ; do file "$line" | grep -q '\btext\b' && echo $line ; done)
+        #echo "f3: $_files"
+
+        gv $(echo "$_files" | xargs echo)
+    }
+fi
 
