@@ -80,7 +80,9 @@ set magic
 set whichwrap+=<,>,h,l
 
 " Show relative line numbers
-set relativenumber
+if v:version > 703
+    set relativenumber
+endif
 
 " Show matching braces
 set showmatch
