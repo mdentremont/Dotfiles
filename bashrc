@@ -148,6 +148,6 @@ set -o vi
 # Use Alt+. to insert argument from previous commands
 bind '"\e."':yank-last-arg
 
-zsh
-
+# Allow zsh to take over the shell
+exec zsh
 
