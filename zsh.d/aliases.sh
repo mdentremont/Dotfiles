@@ -23,7 +23,14 @@ if hash git 2>/dev/null; then
     compdef gv=gvim
 
     # Git aliases
-    alias g="git"
+    # Use hub if it exists
+    if hash hub 2>/dev/null; then
+        alias g="hub"
+        alias git="hub"
+        compdef hub=git
+    else
+        alias g="git"
+    fi
 
     alias gb="git b"
 
