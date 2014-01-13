@@ -1,10 +1,23 @@
 antigen use oh-my-zsh
 
 # oh-my-zsh plugins
-antigen bundle git
-antigen bundle pip
+
+# Only enable plugin if virtualenvwrapper.sh exists
+if hash virtualenvwrapper.sh; then
+    antigen bundle virtualenvwrapper
+fi
+
+# Only enable git plugin if git exists
+if hash git 2>/dev/null; then
+    antigen bundle git
+fi
+
+# Only enable pip plugin if git exists
+if hash pip 2>/dev/null; then
+    antigen bundle pip
+fi
+
 antigen bundle vi-mode
-antigen bundle virtualenvwrapper
 
 # Non oh-my-zsh plugins
 antigen bundle v17al/zsh-vim-mode
@@ -17,7 +30,10 @@ then
     antigen bundle command-not-found
 elif [[ `uname` == 'Darwin' ]]
 then
-    antigen bundle brew
+    # Only enable brew plugin if brew exists
+    if hash brew 2>/dev/null; then
+        antigen bundle brew
+    fi
 fi
 
 # Non oh-my-zsh theme
