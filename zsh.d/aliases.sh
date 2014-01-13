@@ -44,7 +44,7 @@ if hash git 2>/dev/null; then
 
     alias glp="git lp"
 
-    alias gs="git status"
+    alias gs="git status -sb"
 
     function gmod {
         local _path=$(git rev-parse --show-toplevel || pwd)
