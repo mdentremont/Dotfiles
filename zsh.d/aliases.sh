@@ -14,11 +14,14 @@ fi
 # Fix ag colours
 alias ag='ag --color-line="0;33" --color-path="0;32"'
 
-# Only set git aliases if git exists
-if hash git 2>/dev/null; then
+# Alias gv to gvim if it exists
+if hash gvim 2>/dev/null; then
     function gv { ( gvim -f "$@" & ) &>/dev/null ; }
     compdef gv=gvim
+fi
 
+# Only set git aliases if git exists
+if hash git 2>/dev/null; then
     # Git aliases
     # Use hub if it exists
     if hash hub 2>/dev/null; then
