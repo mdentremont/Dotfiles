@@ -1,11 +1,11 @@
 [core]
-	autocrlf = input
+    autocrlf = input
     editor = vim
     excludesfile = ~/.gitignore_global
     filemode = false
 [user]
-	email = mattdentremont@gmail.com
-	name = Matt d'Entremont
+    email = mattdentremont@gmail.com
+    name = Matt d'Entremont
 [alias]
     a = "add"
     b = "branch"
@@ -49,38 +49,38 @@
     head = !"git log -n1"
     #lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
 [rerere]
-	enabled = 1
+    enabled = 1
 [push]
-	default = simple
+    default = simple
 [color]
-	ui = 1
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+    ui = 1
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [diff]
-	tool = tkdiff
+    tool = tkdiff
 [difftool]
     prompt = false
 ;[difftool "default-difftool"]
     ;cmd = default-difftool.sh \"$MERGED\" \"$LOCAL\" \"$REMOTE\"
 [merge]
-	tool = tkdiff
+    tool = tkdiff
     trustExitCode = true
 [mergetool]
-	prompt = false
+    prompt = false
 ;[mergetool "default-mergetool"]
-	;cmd = default-mergetool.sh \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-	;trustExitCode = true
+    ;cmd = default-mergetool.sh \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+    ;trustExitCode = true
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 [crediential]
-	helper = osxkeychain
+    helper = osxkeychain
 [gui]
-	commitmsgwidth = 72
+    commitmsgwidth = 72
