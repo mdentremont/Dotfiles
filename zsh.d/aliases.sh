@@ -1,13 +1,10 @@
-# Bash aliases
-
-[ ! -f ~/git/dev-scripts/bdt_aliases ] || source ~/git/dev-scripts/bdt_aliases
+# ZSH aliases
 
 if [[ `uname` != 'Darwin' ]]
 then
     alias ls='ls --color'
 fi
 alias o='open "$@"'
-alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont"'
 
 # Use apt-fast if it exists
 if hash apt-fast 2>/dev/null; then
