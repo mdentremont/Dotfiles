@@ -11,7 +11,7 @@
     b = "branch"
     ci = "commit"
     cl = "clean --force -X -d"
-    clf = "clean --force -x -d --exclude=\"misc/CascadesDocs\" --exclude=\"*/buildspec.out\" --exclude=\"deps\" --exclude=\"build\""
+    clf = "clean --force -x -d --exclude=\"*/.idea\" --exclude=\"*/*.iml\" --exclude =\".vagrant\""
     co = "checkout"
     cp = "cherry-pick"
     d = "diff"
@@ -38,7 +38,7 @@
 
 # David Gageot's wip/unwip & more (https://gist.github.com/492227)
 # [alias]
-    wip = !"git add --all; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m \"DRAFT - WIP\""
+    wip = !"git add --all; git ls-files --deleted -z | grep . | xargs -0 git rm; git commit -m \"DRAFT - WIP\""
     unwip = !"git log -n 1 | grep -q -c 'DRAFT - WIP' && git reset HEAD~1"
 
     rewip = !"git checkout master && git pull && git checkout $1 && git unwip && git wip && git rebase master"
@@ -61,26 +61,27 @@
 [credential]
     helper = osxkeychain
 [diff]
-    tool = tkdiff
+    tool = bc3
 [difftool]
+    bc3 = trustExitCode
     prompt = false
 ;[difftool "default-difftool"]
     ;cmd = default-difftool.sh \"$MERGED\" \"$LOCAL\" \"$REMOTE\"
 [merge]
-    tool = tkdiff
-    trustExitCode = true
+    tool = bc3
 [mergetool]
+    bc3 = trustExitCode
+    keepBackup = false
     prompt = false
+[mergetool "splice"]
+    cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+    trustExitCode = true
 ;[mergetool "default-mergetool"]
     ;cmd = default-mergetool.sh \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
     ;trustExitCode = true
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
 [crediential]
     helper = osxkeychain
 [gui]
     commitmsgwidth = 72
+[grep]
+    lineNumber = true
