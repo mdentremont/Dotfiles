@@ -1,21 +1,10 @@
 antigen use oh-my-zsh
 
 # oh-my-zsh plugins
-
-# Only enable plugin if virtualenvwrapper.sh exists
-if hash virtualenvwrapper.sh; then
-    antigen bundle virtualenvwrapper
-fi
-
-# Only enable git plugin if git exists
-if hash git 2>/dev/null; then
-    antigen bundle git
-fi
-
-# Only enable pip plugin if git exists
-if hash pip 2>/dev/null; then
-    antigen bundle pip
-fi
+hash git 2>/dev/null && antigen bundle git
+hash pip 2>/dev/null && antigen bundle pip
+hash vagrant 2>/dev/null && antigen bundle vagrant
+hash virtualenvwrapper.sh && antigen bundle virtualenvwrapper
 
 antigen bundle vi-mode
 
