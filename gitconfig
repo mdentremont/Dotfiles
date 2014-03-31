@@ -9,11 +9,12 @@
 [alias]
     a = "add"
     b = "branch"
-    ci = "commit"
-    cl = "clean --force -X -d"
-    clf = "clean --force -x -d --exclude=\"*/.idea\" --exclude=\"*/*.iml\" --exclude =\".vagrant\""
+    ci = "commit -v"
+    # Disable as it is killing my project files
+    #cl = "clean --force -X -d"
+    clf = "clean --force -x -d --exclude=\"*/.idea\" --exclude=\"*/*.iml\" --exclude=\".vagrant/\""
     co = "checkout"
-    cp = "cherry-pick"
+    cp = "cherry-pick -x"
     d = "diff"
     dc = "diff --cached"
     dt = "difftool"
@@ -25,8 +26,8 @@
     lp = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
     m = "merge"
     mt = "mergetool"
-    p = "push origin HEAD:refs/for/"
     pl = "pull"
+    pr = "pull-request"
     ps = "push"
     r = "rm"
     rb = "rebase"
@@ -73,9 +74,6 @@
     bc3 = trustExitCode
     keepBackup = false
     prompt = false
-[mergetool "splice"]
-    cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-    trustExitCode = true
 ;[mergetool "default-mergetool"]
     ;cmd = default-mergetool.sh \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
     ;trustExitCode = true
