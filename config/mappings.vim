@@ -2,7 +2,9 @@
 let mapleader=","
 let g:mapleader=","
 
-nnoremap ; :
+map ; :
+noremap ;; ;
+noremap :: ,
 
 " Support Alt on Ubuntu terminals {{{
 if !has('gui_running')
