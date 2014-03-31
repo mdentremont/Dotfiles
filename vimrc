@@ -79,9 +79,14 @@ set magic
 " Set backspace config
 set whichwrap+=<,>,h,l
 
+" Highlight cursor line and column
+set cursorline
+set cursorcolumn
+
 " Show relative line numbers
 if v:version > 703
     set relativenumber
+    set number
 endif
 
 " Show matching braces
@@ -117,11 +122,8 @@ set t_Co=256
 "    let g:rehash256 = 1
 "endif
 
-set background=light
-colorscheme summerfruit256
-
-" No line numbers
-set nonu
+set background=dark
+colorscheme molokai
 
 set encoding=utf8
 set termencoding=utf-8
