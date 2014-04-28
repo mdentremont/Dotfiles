@@ -1,0 +1,15 @@
+
+Host nas
+    HostName 192.168.1.13
+    User root
+
+Host pi
+    HostName mattdentremont.com
+    User xbian
+
+# Share a connection to each host, and keep it open for 10 minutes after last session closes
+Host *
+    User mdentremont
+    ControlPath /tmp/sshmaster-%r@%h:%p
+    ControlMaster auto
+    ControlPersist 600
