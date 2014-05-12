@@ -12,7 +12,9 @@
     ci = "commit -v"
     # Disable as it is killing my project files
     #cl = "clean --force -X -d"
-    clf = "clean --force -x -d --exclude=\"*/.idea\" --exclude=\"*/*.iml\" --exclude=\".vagrant/\""
+
+    # Forcefully remove all untracked files which do not match the '-e' expressions
+    clf = "clean -dfx -e '.gradle' -e 'gradle.properties' -e 'local.properties' -e '.idea' -e '*.iml' -e '.vagrant'"
     co = "checkout"
     cp = "cherry-pick"
     cpx = "cherry-pick -x"
@@ -21,6 +23,7 @@
     dt = "difftool"
     dtc = "difftool --cached"
     f = "fetch --prune"
+    fpr = "!fpr() { git fetch -f origin pull/$1/merge:refs/pr/origin/$1/merge ; } ; fpr"
     fa = "fetch --all --prune"
     fixup = "commit --amend --no-edit"
     l = "log --graph"
