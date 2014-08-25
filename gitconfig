@@ -87,3 +87,6 @@
     commitmsgwidth = 72
 [grep]
     lineNumber = true
+
+[hub]
+protocol = https
