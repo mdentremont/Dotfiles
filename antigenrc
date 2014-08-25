@@ -2,6 +2,8 @@ antigen use oh-my-zsh
 
 # oh-my-zsh plugins
 hash git 2>/dev/null && antigen bundle git
+hash bundle 2>/dev/null && antigen bundle bundler
+hash npm 2>/dev/null && antigen bundle npm
 hash pip 2>/dev/null && antigen bundle pip
 hash vagrant 2>/dev/null && antigen bundle vagrant
 hash virtualenvwrapper.sh 2>/dev/null && antigen bundle virtualenvwrapper
@@ -20,9 +22,7 @@ then
 elif [[ `uname` == 'Darwin' ]]
 then
     # Only enable brew plugin if brew exists
-    if hash brew 2>/dev/null; then
-        antigen bundle brew
-    fi
+    hash brew 2>/dev/null && antigen bundle brew
 fi
 
 # Non oh-my-zsh theme
