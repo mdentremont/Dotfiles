@@ -27,7 +27,11 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set history=700
+
+" Use bash for shells to avoid delays in zsh starting up
+set shell=/bin/bash
+
+set history=1000
 
 " Hide a buffer instead of closing (don't lose unsaved changes!)
 set hidden
@@ -39,12 +43,19 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" chdir for each open file
+set autochdir
+
 " Add BBNDK tags to the tags list
 set tags=./tags/;/,$GIT_HOME/tags;/
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" ZSH-like tab completion in menu
+set wildmenu
+set wildmode=full
 
 " Only scroll at the border
 set so=0
@@ -123,7 +134,7 @@ set t_Co=256
 "endif
 
 set background=dark
-colorscheme molokai
+colorscheme wombat256
 
 set encoding=utf8
 set termencoding=utf-8
