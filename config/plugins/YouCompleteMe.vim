@@ -1,6 +1,9 @@
 " Do not show the "Load?" dialog for YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
 
+" Use enter to do a YCM GoTo when in normal mode
+autocmd FileType python nnoremap <buffer> <CR> :YcmCompleter GoTo<CR>
+
 " Stolen from
 " https://github.com/rygwn/vimfiles/blob/master/conf.d/setup-paths-using-ycm.vim
 python << EOF
