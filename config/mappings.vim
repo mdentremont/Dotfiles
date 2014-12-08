@@ -2,6 +2,16 @@
 let mapleader=","
 let g:mapleader=","
 
+" Treat Y like other capitals (operate to end of line)
+map Y y$
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" <leader>p to toggle paste mode
+noremap <leader>p :setlocal paste! paste?<cr>
+
 map ; :
 noremap ;; ;
 noremap :: ,
@@ -60,11 +70,6 @@ map <leader>e :e! ~/.vim/vimrc<cr>
 "" Use CTRL-Q to do what CTRL-V used to do
 "noremap <C-Q> <C-V>
 
-" Re-indent pasted text {{{
-nnoremap <Leader>p p'[v']=
-nnoremap <Leader>P P'[v']=
-" }}}
-
 " Disable Ex Mode
 nnoremap Q :
 
@@ -72,10 +77,11 @@ nnoremap Q :
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
 " Move around windows
-nnoremap <C-l> l
-nnoremap <C-h> h
-nnoremap <C-k> k
-nnoremap <C-j> j
+" tmux split plugin takes care of these now
+"nnoremap <C-l> l
+"nnoremap <C-h> h
+"nnoremap <C-k> k
+"nnoremap <C-j> j
 "map <C-a> 
 
 " Switch tabs
