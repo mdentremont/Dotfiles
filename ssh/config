@@ -5,7 +5,13 @@ Host nas
 
 Host pi
     HostName mattdentremont.com
-    User xbian
+    Port 22222
+    User root
+
+Host cubie
+    HostName mattdentremont.com
+    User mdentremont
+
 
 # Share a connection to each host, and keep it open for 10 minutes after last session closes
 Host *

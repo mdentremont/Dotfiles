@@ -28,6 +28,7 @@
     fixup = "commit --amend --no-edit"
     l = "log --graph"
     lp = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+    lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
     m = "merge"
     mt = "mergetool"
     pl = "pull"
@@ -70,23 +71,24 @@
 [difftool]
     bc3 = trustExitCode
     prompt = false
-;[difftool "default-difftool"]
-    ;cmd = default-difftool.sh \"$MERGED\" \"$LOCAL\" \"$REMOTE\"
 [merge]
     tool = bc3
 [mergetool]
     bc3 = trustExitCode
     keepBackup = false
     prompt = false
-;[mergetool "default-mergetool"]
-    ;cmd = default-mergetool.sh \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-    ;trustExitCode = true
 [crediential]
     helper = osxkeychain
 [gui]
     commitmsgwidth = 72
 [grep]
     lineNumber = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [hub]
 protocol = https

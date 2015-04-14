@@ -46,6 +46,13 @@ if hash git 2>/dev/null; then
 
     alias gs="git status -sb"
 
+    function git_branch_cleanup {
+        local branch=''
+        for branch ($(git branch --list 'topic\/*' | grep -v '*')) {
+            git branch -d $branch
+        }
+    }
+
     function gmod {
         local _path=$(git rev-parse --show-toplevel || pwd)
         local _files=
