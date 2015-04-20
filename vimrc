@@ -25,6 +25,16 @@ if has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NeoVim Specific
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('nvim')
+    set timeout
+    set timeoutlen=0
+    set ttimeout
+    set ttimeoutlen=0
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -118,7 +128,6 @@ set foldtext=FoldText()
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts

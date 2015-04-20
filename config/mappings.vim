@@ -16,8 +16,8 @@ map ; :
 noremap ;; ;
 noremap :: ,
 
-" Support Alt on Ubuntu terminals {{{
-if !has('gui_running')
+" Support Alt on VIM terminals {{{
+if !has('gui_running') && has('nvim')
     let c='a'
     while c <= 'z'
       exec "set <A-".c.">=\e".c
