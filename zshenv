@@ -16,3 +16,5 @@ local AIO_TV_DEV_NOTES="$HOME/git/aioTV-dev-notes/bin"
 
 export PATH
 
+
+[[ -f '/opt/boxen/env.sh' ]] && source /opt/boxen/env.sh

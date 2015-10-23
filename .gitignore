@@ -2,3 +2,5 @@ ssh/authorized_keys
 ssh/id_rsa
 ssh/keys
 ssh/known_hosts
+
+tmux/plugins
