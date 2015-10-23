@@ -70,6 +70,17 @@ Bundle 'Valloric/YouCompleteMe.git'
 Bundle 'vimoutliner/vimoutliner.git'
 Bundle 'vim-scripts/matchit.zip.git'
 
+" JS
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'pangloss/vim-javascript'
+Bundle 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
+Bundle 'dsawardekar/portkey', {'for': 'javascript'}
+Bundle 'dsawardekar/ember.vim', {'for': 'javascript'}
+Bundle 'matthewsimo/angular-vim-snippets', {'for': ['javascript', 'html']}
+Bundle 'burnettk/vim-angular', {'for': ['javascript', 'html']}
+Bundle 'mattn/emmet-vim', {'for': 'html'}
+Bundle 'othree/html5.vim', {'for': 'html'}
+
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 " ...
