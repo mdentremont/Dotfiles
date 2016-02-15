@@ -11,8 +11,19 @@ if hash apt-fast 2>/dev/null; then
     alias apt-get="apt-fast"
 fi
 
+if hash ember 2>/dev/null; then
+    alias e='ember'
+fi
+
+if hash docker 2>/dev/null; then
+    alias d='docker'
+    alias dc='docker-compose'
+    alias dm='docker-machine'
+fi
+
 # Fix ag colours
 alias ag='ag --color-line="0;33" --color-path="0;32"'
+
 
 # Alias gv to gvim if it exists
 if hash gvim 2>/dev/null; then
@@ -72,3 +83,16 @@ if hash git 2>/dev/null; then
     }
 fi
 
+alias aio='cd ~/git/aioTV'
+alias admin='cd ~/git/aiotv-admin'
+alias aio2='cd ~/git/aioTV2'
+alias aiodn='cd ~/git/aioTV-dev-notes'
+
+if hash vagrant 2>/dev/null; then
+    alias vagrant_up='(cd ~/git/aioTV && vagrant up)'
+    alias vagrant_halt='(cd ~/git/aioTV && vagrant halt)'
+    alias vagrant_ssh='(cd ~/git/aioTV && vagrant ssh)'
+    alias vagrant_reload='(cd ~/git/aioTV && vagrant halt -f && vagrant up)'
+fi
+
+alias use_vagrant_box='source use_vagrant_box'

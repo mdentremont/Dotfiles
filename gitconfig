@@ -14,8 +14,9 @@
     #cl = "clean --force -X -d"
 
     # Forcefully remove all untracked files which do not match the '-e' expressions
-    clf = "clean -dfx -e '.gradle' -e 'gradle.properties' -e 'local.properties' -e '.idea' -e '*.iml' -e '.vagrant'"
+    clf = "clean -dfx -e '.gradle' -e 'gradle.properties' -e 'local.properties' -e '.idea' -e '*.iml'"
     co = "checkout"
+    cor = "!cor() { br=$(recent_branches | fzf --no-sort --reverse); [[ ${SHELL##*/} == zsh ]] && print -s \"git checkout $br\"; [[ -n $br ]] && git checkout $br;}; cor"
     cp = "cherry-pick"
     cpx = "cherry-pick -x"
     d = "diff"
@@ -65,7 +66,8 @@
     interactive = auto
     status = auto
 [credential]
-    helper = osxkeychain
+	helper = osxkeychain
+    useHttpPath = true
 [diff]
     tool = bc3
 [difftool]

@@ -1,6 +1,3 @@
-crashlytics.properties
-
-# From boxen's gitignore
 .DS_Store
 .DS_Store?
 .Spotlight-V100
