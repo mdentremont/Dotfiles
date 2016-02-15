@@ -31,7 +31,7 @@ if has('nvim')
     set timeout
     set timeoutlen=0
     set ttimeout
-    set ttimeoutlen=0
+    set ttimeoutlen=-1
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,6 +48,8 @@ set hidden
 
 " Enable filetype plugin
 filetype plugin on
+
+" Allow indentation to be filetype dependent
 filetype indent on
 
 " Set to auto read when a file is changed from the outside
@@ -177,6 +179,8 @@ endtry
 set expandtab
 set shiftwidth=4
 set tabstop=4
+
+autocmd FileType javascript set shiftwidth=2 tabstop=2
 
 set nolinebreak
 
