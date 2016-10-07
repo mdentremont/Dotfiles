@@ -9,9 +9,9 @@ zplug "plugins/bundler", from:oh-my-zsh, if:"which bundle"
 zplug "plugins/docker", from:oh-my-zsh, if:"which docker"
 zplug "plugins/docker-compose", from:oh-my-zsh, if:"which docker-compose"
 zplug "plugins/ember-cli", from:oh-my-zsh, if:"which ember"
-
+#
 # This guy seems a bit slow
-#zplug "plugins/npm", from:oh-my-zsh, if:"which npm"
+zplug "plugins/npm", from:oh-my-zsh, if:"which npm"
 
 zplug "plugins/pip", from:oh-my-zsh, if:"which pip"
 zplug "plugins/python", from:oh-my-zsh
