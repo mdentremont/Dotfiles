@@ -41,6 +41,7 @@
     su = "submodule update --init --recursive"
     t = "tag"
     ws = "diff --check"
+    wt = "worktree"
     desk = "stash"
 
 # David Gageot's wip/unwip & more (https://gist.github.com/492227)
@@ -58,7 +59,7 @@
 [rerere]
     enabled = 1
 [push]
-    default = simple
+	default = nothing
 [color]
     ui = 1
     branch = auto
@@ -69,14 +70,14 @@
 	helper = osxkeychain
     useHttpPath = true
 [diff]
-    tool = bc3
+    tool = bc
 [difftool]
-    bc3 = trustExitCode
+    bc = trustExitCode
     prompt = false
 [merge]
-    tool = bc3
+    tool = bc
 [mergetool]
-    bc3 = trustExitCode
+    bc = trustExitCode
     keepBackup = false
     prompt = false
 [crediential]
