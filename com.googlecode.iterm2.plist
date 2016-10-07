@@ -1456,6 +1456,8 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
+	<key>NSScrollViewShouldScrollUnderTitlebar</key>
+	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
 		<data>
@@ -1467,18 +1469,29 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>304</string>
+		<string>322</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
+	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
+	<dict>
+		<key>TB Is Shown</key>
+		<integer>1</integer>
+	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>696 315 924 485 0 0 2560 1417 </string>
+	<string>-1358 948 606 456 -1680 390 1680 1027 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>1080 977 400 129 0 0 2560 1417 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>970 780 620 392 0 0 2560 1417 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>-1536 729 918 498 -1680 390 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 858 2560 559 0 0 2560 1417 </string>
+	<string>0 198 1920 979 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>921 62 990 701 0 0 1920 1177 </string>
+	<string>723 423 990 702 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 447 1005 611 0 0 1920 1058 </string>
 	<key>NeverWarnAboutShortLivedSessions_6A036056-A828-45F2-9825-4797107999F3</key>
@@ -2769,7 +2782,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
-			<integer>37</integer>
+			<integer>65</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
@@ -2938,10 +2951,38 @@
 			<string>/Users/mattdentremont</string>
 		</dict>
 	</array>
+	<key>NoSyncConfirmBeta</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
+	<integer>0</integer>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
+	<integer>0</integer>
+	<key>NoSyncHaveShownPromoWithId_4</key>
+	<true/>
+	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
+	<true/>
+	<key>NoSyncInstallationId</key>
+	<string>A6C80AC6-BAC7-4FDC-B2A1-297ECF263FCB</string>
+	<key>NoSyncLastTipTime</key>
+	<real>495650271.91105402</real>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
+	<key>NoSyncSuppressAnnyoingBellOffer</key>
+	<true/>
+	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
+	<real>477926678.45377398</real>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>453317186.97208202</real>
+	<real>477926629.39639699</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>476898834.51380903</real>
+	<real>477926548.366211</real>
+	<key>NoSyncTipsToNotShow</key>
+	<array>
+		<string>000</string>
+	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -3001,12 +3042,14 @@
 	<integer>3</integer>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
+	<key>SUFeedAlternateAppNameKey</key>
+	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=23</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-02-11T15:05:26Z</date>
+	<date>2016-09-15T16:33:04Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3059,6 +3102,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1.4</string>
+	<string>3.0.9</string>
 </dict>
 </plist>
