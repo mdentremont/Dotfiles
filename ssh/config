@@ -1,15 +1,23 @@
-
 Host nas
-    HostName 192.168.1.13
+    HostName 192.168.2.50
     User root
 
 Host pi
-    HostName mattdentremont.com
-    Port 22222
+    HostName mattdentremont.ddns.net
+    User root
+    Port 22
+
+Host pi-lan
+    HostName 192.168.2.52
     User root
 
+Host cubie-lan
+    HostName 192.168.2.51
+    Port 22222
+    User mdentremont
+
 Host cubie
-    HostName mattdentremont.com
+    ProxyCommand ssh -q pi nc 192.168.2.51 22222
     User mdentremont
 
 
