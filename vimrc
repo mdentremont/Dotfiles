@@ -119,12 +119,13 @@ set showmatch
 set mat=1
 
 " Folding settings {{{
-set foldcolumn=0
-set foldenable
-set foldlevel=0
-set foldmethod=marker
-set foldtext=FoldText()
-" }}}
+set nofoldenable
+"set foldcolumn=0
+"set foldenable
+"set foldlevel=0
+"set foldmethod=marker
+"set foldtext=FoldText()
+"" }}}
 
 " No error bells
 set noerrorbells
