@@ -16,6 +16,7 @@ if hash ember 2>/dev/null; then
 fi
 
 if hash docker 2>/dev/null; then
+    alias docker-volume-cleanup='docker volume rm $(docker volume ls -qf dangling=true)'
     alias d='docker'
     alias dc='docker-compose'
     alias dm='docker-machine'
@@ -30,6 +31,12 @@ if hash gvim 2>/dev/null; then
     function gv { ( gvim -f "$@" & ) &>/dev/null ; }
     compdef gv=gvim
 fi
+
+qf() {
+    cmd=$(fc -rnlIL -m '[ar]g*' -2 2>/dev/null | head -n1 | sed 's/^rg/rg --vimgrep/')
+    [[ -z $cmd ]] && return 1
+    vim -q =(eval ${cmd}) -c 'copen'
+}
 
 # Only set git aliases if git exists
 if hash git 2>/dev/null; then
@@ -57,7 +64,7 @@ if hash git 2>/dev/null; then
 
     alias gs="git status -sb"
 
-    function git_branch_cleanup {
+    function git_cleanup_branches {
         local branch=''
         for branch ($(git branch --list 'topic\/*' | grep -v '*')) {
             git branch -d $branch
@@ -83,16 +90,11 @@ if hash git 2>/dev/null; then
     }
 fi
 
-alias aio='cd ~/git/aioTV'
+alias aio='cd ~/git/aiotv-core/core'
+alias core='cd ~/git/aiotv-core/core'
 alias admin='cd ~/git/aiotv-admin'
-alias aio2='cd ~/git/aioTV2'
-alias aiodn='cd ~/git/aioTV-dev-notes'
 
-if hash vagrant 2>/dev/null; then
-    alias vagrant_up='(cd ~/git/aioTV && vagrant up)'
-    alias vagrant_halt='(cd ~/git/aioTV && vagrant halt)'
-    alias vagrant_ssh='(cd ~/git/aioTV && vagrant ssh)'
-    alias vagrant_reload='(cd ~/git/aioTV && vagrant halt -f && vagrant up)'
-fi
 
-alias use_vagrant_box='source use_vagrant_box'
+function rm_dangling_docker() {
+    docker volume rm ${docker volume ls -qf dangling=true}
+}
