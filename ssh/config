@@ -11,19 +11,12 @@ Host pi-lan
     HostName 192.168.2.52
     User root
 
-Host cubie-lan
-    HostName 192.168.2.51
-    Port 22222
-    User mdentremont
+Host torrent-lan
+    HostName 192.168.2.19
+    Port 22
+    User pi
 
-Host cubie
-    ProxyCommand ssh -q pi nc 192.168.2.51 22222
-    User mdentremont
+Host torrent
+    ProxyCommand ssh -q pi nc 192.168.2.19 22
+    User pi
 
-
-# Share a connection to each host, and keep it open for 10 minutes after last session closes
-Host *
-    User mdentremont
-    ControlPath /tmp/sshmaster-%r@%h:%p
-    ControlMaster auto
-    ControlPersist 600

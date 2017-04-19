@@ -90,10 +90,7 @@ if hash git 2>/dev/null; then
     }
 fi
 
-alias aio='cd ~/git/aiotv-core/core'
-alias core='cd ~/git/aiotv-core/core'
-alias admin='cd ~/git/aiotv-admin'
-
+alias src="cd /mnt/c/Users/matt.dentremont/git/"
 
 function rm_dangling_docker() {
     docker volume rm ${docker volume ls -qf dangling=true}

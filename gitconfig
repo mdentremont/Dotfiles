@@ -1,8 +1,9 @@
 [core]
-    autocrlf = input
+	autocrlf = true
     editor = vim
     excludesfile = ~/.gitignore_global
     filemode = false
+	safecrlf = false
 [user]
     email = mattdentremont@gmail.com
     name = Matt d'Entremont
