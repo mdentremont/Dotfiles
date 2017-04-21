@@ -11,4 +11,7 @@ fun! MySys()
 endfun
 
 set runtimepath=~/.vim,$VIMRUNTIME
-source ~/.vim/vimrc
+
+if !has("nvim")
+    source  ~/.config/nvim/init.vim
+endif
