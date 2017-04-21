@@ -1,0 +1,13 @@
+"1.0rc1
+
+loadplugins '\.(js|penta)$'
+group user
+map -count -modes=b,i,c,t,n,v <C-a> <count><pass-next-key>
+map -count -modes=b,i,c,t,n,v <C-c> <count><Pass>
+map -count -modes=b,i,c,t,n,v <C-l> <count><Pass>
+map -count -modes=b,i,c,t,n,v <C-v> <count><Pass>
+map -count -modes=b,i,c,t,n,v <C-x> <count><Pass>
+set guioptions=bCrsTB
+
+" vim: set ft=pentadactyl:
+
