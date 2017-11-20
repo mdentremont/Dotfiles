@@ -56,7 +56,7 @@ if hash git 2>/dev/null; then
 
     alias gdc="git diff --cached"
 
-    alias gg="git gui&"
+    alias gg="/mnt/c/Program\ Files/Git/cmd/git-gui.exe &"
 
     alias gl="git l"
 
@@ -66,7 +66,7 @@ if hash git 2>/dev/null; then
 
     function git_cleanup_branches {
         local branch=''
-        for branch ($(git branch --list 'topic\/*' | grep -v '*')) {
+        for branch ($(git branch --list | grep -v '*')) {
             git branch -d $branch
         }
     }
@@ -90,8 +90,9 @@ if hash git 2>/dev/null; then
     }
 fi
 
-alias src="cd /mnt/c/Users/matt.dentremont/git/"
+alias src="cd /mnt/c/Users/matt.dentremont/git/intellitrack-service"
 
 function rm_dangling_docker() {
     docker volume rm ${docker volume ls -qf dangling=true}
 }
+

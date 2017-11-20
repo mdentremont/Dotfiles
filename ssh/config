@@ -5,18 +5,24 @@ Host nas
 Host pi
     HostName mattdentremont.ddns.net
     User root
-    Port 22
 
-Host pi-lan
+Host pi-local
     HostName 192.168.2.52
     User root
 
-Host torrent-lan
-    HostName 192.168.2.19
-    Port 22
+Host pi-local-temp
+    HostName 192.168.2.11
+    User root
+
+Host torrent-local
+    HostName 192.168.2.53
     User pi
 
-Host torrent
-    ProxyCommand ssh -q pi nc 192.168.2.19 22
+Host torrent-lan-temp
+    HostName 192.168.2.11
+    User pi
+
+Host torrent-remote
+    ProxyCommand ssh -q pi nc 192.168.2.53 22
     User pi
 

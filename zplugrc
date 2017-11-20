@@ -2,15 +2,15 @@
 
 source ~/.zplug/init.zsh
 
-autoload colors && colors
-setopt prompt_subst
+#autoload colors && colors
+#setopt prompt_subst
 
 # Support oh-my-zsh plugins and the like
 
 
 # oh-my-zsh plugins
-zplug "plugins/git",   from:oh-my-zsh
-zplug "lib/clipboard", from:oh-my-zsh
+#zplug "plugins/git",   from:oh-my-zsh
+#zplug "lib/clipboard", from:oh-my-zsh
 #zplug "plugins/github", from:oh-my-zsh, if:"which hub"
 #zplug "plugins/bundler", from:oh-my-zsh, if:"which bundle"
 #zplug "plugins/docker", from:oh-my-zsh, if:"which docker"
@@ -38,7 +38,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 ### Non oh-my-zsh theme
 #zplug "judgedim/oh-my-zsh-judgedim-theme", use:"judgedim.zsh-theme"
-zplug "mdentremont/girazz", use:"girazz.zsh-theme"
+zplug "mdentremont/girazz", use:"girazz.zsh-theme", as:theme
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -49,4 +49,4 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load #--verbose

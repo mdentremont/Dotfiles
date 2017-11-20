@@ -28,10 +28,18 @@ endif
 " => NeoVim Specific
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')
-    set timeout
-    set timeoutlen=0
-    set ttimeout
+"    set timeout
+"    set timeoutlen=0
+"    set ttimeout
     set ttimeoutlen=-1
+else
+    set ttimeoutlen=50
+endif
+
+if has("nvim")
+    nmap <BS> <C-h>
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <S-Esc> <Esc>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -59,7 +67,7 @@ set autoread
 set autochdir
 
 " Add BBNDK tags to the tags list
-set tags=./tags/;/,$GIT_HOME/tags;/
+"set tags=./tags/;/,$GIT_HOME/tags;/
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
@@ -67,7 +75,12 @@ set tags=./tags/;/,$GIT_HOME/tags;/
 
 " ZSH-like tab completion in menu
 set wildmenu
-set wildmode=full
+
+set wildignore+=*.o,*~,.lo
+set suffixes+=.in,.a
+
+" shell style completion, double tab cycles
+set wildmode=list:longest,full
 
 " Only scroll at the border
 set so=0
@@ -120,11 +133,6 @@ set mat=1
 
 " Folding settings {{{
 set nofoldenable
-"set foldcolumn=0
-"set foldenable
-"set foldlevel=0
-"set foldmethod=marker
-"set foldtext=FoldText()
 "" }}}
 
 " No error bells
@@ -146,7 +154,7 @@ set t_Co=256
 "endif
 
 set background=dark
-colorscheme wombat256
+colorscheme wombat256mod
 
 set encoding=utf8
 set termencoding=utf-8
@@ -213,7 +221,11 @@ set statusline+=\ %P    "percent through file
 set guitablabel=%t
 
 " Source viminit files {{{
-runtime! config/*.vim
-runtime! config/**/*.vim
+for src in split(glob("~/.vim/config/*.vim"), "\n")
+    execute "source " . src
+endfor
+for src in split(glob("~/.vim/config/**/*.vim"), "\n")
+    execute "source " . src
+endfor
 " }}}
 

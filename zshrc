@@ -1,13 +1,16 @@
 source ~/.zplugrc
 
-HISTSIZE=10000
-SAVEHIST=10000
-
 # Reduce the timeout on escape sequences
 export KEYTIMEOUT=1
 
 # Source all configs
-for file in $(find ~/.zsh.d/ -type f | sort)
+#
+configs=$(find ~/.zsh.d/ -type f)
+configs=$(echo $configs | sort)
+
+configs=$( echo $configs | tr '\n' ' ')
+
+for file in $=configs
 do
     source $file
 done
