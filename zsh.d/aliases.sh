@@ -65,10 +65,20 @@ if hash git 2>/dev/null; then
     alias gs="git status -sb"
 
     function git_cleanup_branches {
-        local branch=''
-        for branch ($(git branch --list | grep -v '*')) {
-            git branch -d $branch
-        }
+        git fetch && git branch --merged origin/development | cut -d/ -f2- | grep -v -e '^release' -e '^development' | xargs -r -n 1 git branch -d
+    }
+
+    function git_cleanup_remote_branches {
+        git fetch && git branch -r --merged origin/development | cut -d/ -f2- | grep -v -e '^release' -e '^development$' -e '^itk-release' -e '^hotfix_' -e '^qa-drop' | xargs -r -n 1 git push --delete origin
+    }
+
+    function git_cleanup_old_branches {
+        git fetch
+        for branch in $(git branch -r --no-merged origin/development | cut -d/ -f2- | grep -v -e '^release' -e '^development$' -e '^itk-release' -e '^hotfix_' -e '^qa-drop'); do
+            if [ -z "$(git log -1 --since='6 month ago' -s origin/$branch)" ]; then
+                git push --delete origin $branch
+            fi
+        done
     }
 
     function gmod {
@@ -91,6 +101,7 @@ if hash git 2>/dev/null; then
 fi
 
 alias src="cd /mnt/c/Users/matt.dentremont/git/intellitrack-service"
+alias rel="cd /mnt/c/Users/matt.dentremont/git/intellitrack-service-release"
 
 function rm_dangling_docker() {
     docker volume rm ${docker volume ls -qf dangling=true}
