@@ -40,7 +40,7 @@ nmap <leader>w :w!<cr>
 " }}}
 
 " Fast editing of vimrc {{{
-map <leader>e :e! ~/.vim/vimrc<cr>
+map <leader>e :e! ~/.config/nvim/init.vim<cr>
 " }}}
 
 "" CTRL-X and SHIFT-Del are Cut
