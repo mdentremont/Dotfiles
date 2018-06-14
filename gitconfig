@@ -45,10 +45,8 @@
     wt = "worktree"
     desk = "stash"
 
-# David Gageot's wip/unwip & more (https://gist.github.com/492227)
-# [alias]
-    wip = !"git add --all; git commit -m \"DRAFT - WIP\""
-    unwip = !"git log -n 1 | grep -q -c 'DRAFT - WIP' && git reset HEAD~1"
+    wip="!wip() { br=\"$(git rev-parse --abbrev-ref HEAD)\" && sha=\"$(git rev-parse --short HEAD)\" && name=${br:-${sha}} && git add . && git commit -m\"WIP: ${name}\"; } ; wip"
+    unwip="!unwip() { if ! git log -1 --pretty=%s | grep -q '^WIP: '; then echo previous commit was not a WIP: 1>&2; git log -1 --oneline 1>&2; exit 1; else git reset --soft HEAD~1; git status; fi; } ; unwip"
 
     head = !"git log -n1"
     #lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
