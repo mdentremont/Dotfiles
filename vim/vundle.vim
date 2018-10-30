@@ -8,7 +8,7 @@ call plug#begin('~/.vim/bundle')
 
 "
 " original repos on github
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'corntrace/bufexplorer'
 Plug 'godlygeek/tabular'
@@ -49,7 +49,7 @@ endif
 
 " JS
 "Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
+"Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 "Plug 'dsawardekar/portkey', {'for': 'javascript'}
 "Plug 'matthewsimo/angular-vim-snippets', {'for': ['javascript', 'html']}
 "Plug 'burnettk/vim-angular', {'for': ['javascript', 'html']}

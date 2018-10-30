@@ -10,6 +10,7 @@
 [alias]
     a = "add"
     b = "branch"
+    bv = "branch -vv"
     ci = "commit -v"
     # Disable as it is killing my project files
     #cl = "clean --force -X -d"

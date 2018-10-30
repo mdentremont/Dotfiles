@@ -4,3 +4,4 @@ ssh/keys
 ssh/known_hosts
 tmux/plugins
 vim/bundle
+config/configstore

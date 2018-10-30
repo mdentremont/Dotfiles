@@ -65,16 +65,16 @@ if hash git 2>/dev/null; then
     alias gs="git status -sb"
 
     function git_cleanup_branches {
-        git fetch && git branch --merged origin/development | cut -d/ -f2- | grep -v -e '^release' -e '^development' | xargs -r -n 1 git branch -d
+        git fetch && git branch --merged origin/production | cut -d/ -f2- | grep -v -e '^production' | xargs -r -n 1 git branch -d
     }
 
     function git_cleanup_remote_branches {
-        git fetch && git branch -r --merged origin/development | cut -d/ -f2- | grep -v -e '^release' -e '^development$' -e '^itk-release' -e '^hotfix_' -e '^qa-drop' | xargs -r -n 1 git push --delete origin
+        git fetch && git branch -r --merged origin/production | cut -d/ -f2- | grep -v -e '^production' -e '^bugfix' -e '^itk-release' -e '^utilities' -e '^feature' -e '^hotfix_' -e '^qa-drop' | xargs -r -n 1 git push --delete origin
     }
 
     function git_cleanup_old_branches {
         git fetch
-        for branch in $(git branch -r --no-merged origin/development | cut -d/ -f2- | grep -v -e '^release' -e '^development$' -e '^itk-release' -e '^hotfix_' -e '^qa-drop'); do
+        for branch in $(git branch -r --no-merged origin/production | cut -d/ -f2- | grep -v -e '^production' -e '^bugfix' -e '^itk-release' -e '^utilities' -e '^feature' -e '^hotfix_' -e '^qa-drop'); do
             if [ -z "$(git log -1 --since='6 month ago' -s origin/$branch)" ]; then
                 git push --delete origin $branch
             fi
