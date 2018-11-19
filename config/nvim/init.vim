@@ -1,12 +1,23 @@
 set nocompatible
 
+fun! MySys()
+    if has("mac")
+        return "mac"
+    elseif has("unix")
+        return "linux"
+    elseif has("win32")
+        return "windows"
+    endif
+
+    return "unknown"
+endfun
+
 " Source the vundle config
 source ~/.vim/vundle.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GVIM Specific
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 if has('gui_running')
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""
     " GVIM UI
@@ -170,16 +181,13 @@ set backupdir=~/.vim/backup
 set noswapfile
 
 "Persistent undo
-try
-    if MySys() == "windows"
-      set undodir=%TMP%
-    else
-      set undodir=~/.vim/undodir
-    endif
+if MySys() == "windows"
+  set undodir=%TMP%
+else
+  set undodir=~/.vim/undodir
+endif
 
-    set undofile
-catch
-endtry
+set undofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
