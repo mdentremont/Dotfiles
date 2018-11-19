@@ -3,5 +3,6 @@ ssh/id_rsa
 ssh/keys
 ssh/known_hosts
 tmux/plugins
+!tmux/plugins/tpm
 vim/bundle
 config/configstore
