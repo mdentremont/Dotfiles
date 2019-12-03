@@ -1,12 +1,14 @@
 [core]
     autocrlf = input
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore_global
 	fileMode = false
 	safecrlf = false
 [user]
     email = mattdentremont@gmail.com
     name = Matt d'Entremont
+[gui]
+    gcwarning = false
 [alias]
     a = "add"
     b = "branch"
@@ -51,6 +53,10 @@
 
     head = !"git log -n1"
     #lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
+
+    # from https://stackoverflow.com/questions/8475448/find-merge-commit-which-include-a-specific-commit
+    find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    show-merge
 [rerere]
     enabled = 1
 [push]
@@ -80,12 +86,6 @@
     commitmsgwidth = 72
 [grep]
     lineNumber = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-
 [hub]
 protocol = https
