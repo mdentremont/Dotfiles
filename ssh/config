@@ -3,31 +3,27 @@ Host github-other
     User git
     IdentityFile ~/.ssh/keys/github-other
 
-Host nas
-    HostName 192.168.2.50
-    User root
-
-Host pi
-    HostName mattdentremont.ddns.net
-    User root
-
 Host pi-local
     HostName 192.168.2.52
     User root
 
-Host pi-local-temp
-    HostName 192.168.2.11
+Host pi-remote
+    ProxyCommand ssh -q pi-local nc 192.168.2.52 22
     User root
 
 Host torrent-local
     HostName 192.168.2.53
     User pi
 
-Host torrent-lan-temp
-    HostName 192.168.2.11
-    User pi
-
 Host torrent-remote
-    ProxyCommand ssh -q pi nc 192.168.2.53 22
+    HostName proxy2.remot3.it
+    Port 36134
     User pi
 
+Host vpn-local
+    HostName 192.168.2.24
+    User pi
+ 
+Host vpn-remote
+    ProxyCommand ssh -q pi-local nc 192.168.2.24 22
+    User pi
