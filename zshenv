@@ -16,5 +16,6 @@ path=(
 
 
 export FRP='/mnt/c/Users/matt.dentremont/bin/frp/'
+export LESS='-I -R'
 
 export PATH

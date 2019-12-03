@@ -112,3 +112,6 @@ fish_vi_key_bindings
 set -g theme_display_git_dirty no
 set -g theme_display_git_untracked no
 
+# case insensitive less search
+set -x LESS '-I -R'
+
