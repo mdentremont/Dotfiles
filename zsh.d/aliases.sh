@@ -22,6 +22,10 @@ if hash docker 2>/dev/null; then
     alias dm='docker-machine'
 fi
 
+if hash fuck 2>/dev/null; then
+  eval $(thefuck --alias)
+fi
+
 # Fix ag colours
 alias ag='ag --color-line="0;33" --color-path="0;32"'
 
@@ -65,11 +69,24 @@ if hash git 2>/dev/null; then
     alias gs="git status -sb"
 
     function git_cleanup_branches {
-        git fetch && git branch --merged origin/production | cut -d/ -f2- | grep -v -e '^production' | xargs -r -n 1 git branch -d
+        git fetch && git_merged_branches | cut -d/ -f2- | xargs -r -n 1 git branch -D
     }
 
     function git_cleanup_remote_branches {
-        git fetch && git branch -r --merged origin/production | cut -d/ -f2- | grep -v -e '^production' -e '^bugfix' -e '^itk-release' -e '^utilities' -e '^feature' -e '^hotfix_' -e '^qa-drop' | xargs -r -n 1 git push --delete origin
+        git fetch && git_merged_branches -r | sed -e 's|^origin/||' | xargs --no-run-if-empty --max-args=1 git push origin --delete
+    }
+
+    function get_remote_target_branches {
+        git for-each-ref --format='%(refname)' refs/remotes/origin/bugfix refs/remotes/origin/utilities refs/remotes/origin/rc refs/remotes/origin/feature/ refs/remotes/origin/hotfix/ refs/remotes/origin/rc/ refs/remotes/origin/bugfixdrop 2>&/dev/null | sed 's|^refs/remotes/origin/||'
+    }
+
+    function git_merged_branches {
+        refs="${1:-refs/heads}"
+        [[ "$refs" == "-r" ]] && refs="refs/remotes/"
+        get_remote_target_branches | while read target_branch
+        do
+            git for-each-ref --format='%(refname:short)' "--merged=origin/$target_branch" $refs 2>&/dev/null
+        done | sort -u | grep -vE '(^|/)(rc/.*|bugfix|bugfixdrop|feature/.*|production|master|rc|translations|utilities)$'
     }
 
     function git_cleanup_old_branches {
