@@ -1,6 +1,0 @@
-[dotfiles]
-repository = ~/Dotfiles
-ignore = [
-    '.git',
-    '.gitignore'
-    '.DS_Store']
