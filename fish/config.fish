@@ -25,7 +25,11 @@ if type -q docker
 end
 
 if type -q fuck
-    thefuck --alias | source
+    set -x THEFUCK_OVERRIDDEN_ALIASES 'apt-get,ag,git'
+    function update_the_fuck
+        thefuck --alias > ~/.config/fish/functions/fuck.fish
+        source ~/.config/fish/functions/fuck.fish
+    end
 end
 
 # Fix ag colours
