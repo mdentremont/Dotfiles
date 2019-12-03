@@ -148,6 +148,6 @@ set -o vi
 # Use Alt+. to insert argument from previous commands
 bind '"\e."':yank-last-arg
 
-# Allow zsh to take over the shell if it exists
-hash zsh 2>/dev/null && exec zsh
+# Allow fish to take over the shell if it exists
+hash fish 2>/dev/null && exec fish
 

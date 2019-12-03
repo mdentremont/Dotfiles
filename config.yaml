@@ -1,0 +1,65 @@
+config:
+  backup: true
+  banner: true
+  create: true
+  dotpath: ~/Dotfiles
+  keepdot: false
+  link_dotfile_default: link
+  link_on_import: link
+  longkey: false
+dotfiles:
+  bash_history:
+    dst: ~/.bash_aliases
+    src: bash_aliases 
+  bashrc:
+    dst: ~/.bashrc
+    src: bashrc 
+  bin:
+    dst: ~/bin
+    src: bin
+  checkoutmanager.cfg:
+    dst: ~/.checkoutmanager.cfg
+    src: checkoutmanager.cfg
+  com.googlecode.iterm2.plist:
+    dst: ~/.com.googlecode.iterm2.plist
+    src: com.googlecode.iterm2.plist
+  fish:
+    dst: ~/.config/fish
+    src: fish
+  gitconfig:
+    dst: ~/.gitconfig
+    src: gitconfig
+  gitignore_global:
+    dst: ~/.gitignore_global
+    src: gitignore_global
+  nvim:
+    dst: ~/.config/nvim
+    src: config/nvim
+  ssh:
+    dst: ~/.ssh
+    src: ssh
+  thefuck:
+    dst: ~/.config/thefuck
+    src: config/thefuck
+  tmux:
+    dst: ~/.tmux
+    src: tmux
+  tmux.conf:
+    dst: ~/.tmux.conf
+    src: tmux.conf
+  vim:
+    dst: ~/.vim
+    src: vim
+  vimrc:
+    dst: ~/.vimrc
+    src: vimrc
+  zshenv:
+    dst: ~/.zshenv
+    src: zshenv
+  zshrc:
+    dst: ~/.zshrc
+    src: zshrc
+profiles:
+  TG-1433:
+    dotfiles:
+    - ALL
