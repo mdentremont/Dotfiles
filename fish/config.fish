@@ -17,12 +17,17 @@ if type -q ember
     abbr e ember
 end
 
-if type -q docker
-    abbr docker-volume-cleanup docker volume rm (docker volume ls -qf dangling=true)
-    abbr d docker
-    abbr dc docker-compose
-    abbr dm docker-machine
-end
+#if type -q docker
+#    abbr docker-volume-cleanup docker volume rm (docker volume ls -qf dangling=true)
+#    abbr d docker
+#    abbr dc docker-compose
+#    abbr dm docker-machine
+#
+#    if uname -a | grep -q 'Microsoft'
+#        # wsl docker
+#        set -x DOCKER_HOST tcp://localhost:2375
+#    end
+#end
 
 if type -q fuck
     set -x THEFUCK_OVERRIDDEN_ALIASES 'apt-get,ag,git'
@@ -58,6 +63,7 @@ if type -q git
     abbr d git diff
     abbr dc git diff --cached
     abbr gg cmd.exe /c start \"\" \"C:\\Program Files\\Git\\cmd\\git-gui.exe\"
+    abbr gs git status
     abbr f git fetch --prune
     abbr fa git fetch --all --prune
     abbr l git l
@@ -77,10 +83,14 @@ if type -q git
 
     function git_cleanup_remote_branches
         git fetch; and git_merged_branches -r | sed -e 's|^origin/||' | xargs --no-run-if-empty --max-args=1 git push origin --delete
-    end 
+    end
 
     function get_remote_target_branches
-        git for-each-ref --format='%(refname)' refs/remotes/origin/bugfix refs/remotes/origin/utilities refs/remotes/origin/rc refs/remotes/origin/feature/ refs/remotes/origin/hotfix/ refs/remotes/origin/rc/ refs/remotes/origin/bugfixdrop 2>/dev/null | sed 's|^refs/remotes/origin/||'
+        git for-each-ref --format='%(refname)' refs/remotes/origin/bugfix refs/remotes/origin/utilities refs/remotes/origin/rc refs/remotes/origin/feature/ refs/remotes/origin/hotfix/ refs/remotes/origin/rc/ refs/remotes/origin/bugfixdrop refs/remotes/origin/misc/high refs/remotes/origin/misc/low refs/remotes/origin/misc/drop 2>/dev/null | sed 's|^refs/remotes/origin/||'
+    end
+
+    function git_copy_head
+        git rev-parse HEAD | clip.exe
     end
 
     function git_merged_branches --argument-names 'remoteSwitch'
@@ -91,26 +101,38 @@ if type -q git
         end
         get_remote_target_branches | while read target_branch
             git for-each-ref --format='%(refname:short)' "--merged=origin/$target_branch" $refs 2>/dev/null
-        end | sort -u | grep -vE '(^|/)(rc/.*|bugfix|bugfixdrop|feature/.*|production|master|rc|translations|utilities)$'
+        end | sort -u | grep -vE '(^|/)(rc/.*|bugfix|bugfixdrop|feature/.*|production|master|rc|translations|utilities|hotfix)$'
     end
 
     function git_cleanup_old_branches
         git fetch
-        for branch in (git branch -r --no-merged origin/production | cut -d/ -f2- | grep -v -e '^production' -e '^bugfix' -e '^itk-release' -e '^utilities' -e '^feature' -e '^hotfix_' -e '^qa-drop')
+        for branch in (git branch -r --no-merged origin/production | cut -d/ -f2- | grep -v -e '^production' -e '^bugfix' -e '^itk-release' -e '^utilities' -e '^feature/' -e '^hotfix/' -e '^qa-drop' -e '^misc/drop' -e '^misc/low' -e '^misc/high')
             if [ -z "(git log -1 --since='6 month ago' -s origin/$branch)" ]
                 git push --delete origin $branch
             end
-        end 
-    end 
+        end
+    end
 end
 
-abbr src cd /mnt/c/Users/matt.dentremont/git/intellitrack-service
-abbr rel cd /mnt/c/Users/matt.dentremont/git/intellitrack-service-release
+if uname -a | grep -q 'Microsoft'
+    set -x BROWSER "win-start"
+    set fish_term24bit 1
+
+    set -g WIN_HOME /mnt/c/Users/matt.dentremont
+    set -g DESKTOP $WIN_HOME/Desktop
+
+    abbr src cd $WIN_HOME/git/intellitrack-service
+    abbr rel cd $WIN_HOME/git/intellitrack-service-release
+    abbr desk cd $WIN_HOME/Desktop
+
+end
+
 abbr vi nvim
 abbr vim nvim
 
-fish_vi_key_bindings
+set -U fish_user_paths ~/bin ~/.local/bin $fish_user_paths
 
+fish_vi_key_bindings
 
 # oh-my-fish/theme-bobthefish
 set -g theme_display_git_dirty no
@@ -118,4 +140,3 @@ set -g theme_display_git_untracked no
 
 # case insensitive less search
 set -x LESS '-I -R'
-
