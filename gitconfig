@@ -72,7 +72,7 @@
 [difftool]
     prompt = false
 [difftool "bc-windows"]
-    cmd = \"/mnt/c/Program Files/Beyond Compare 4/BComp.exe\" \"$LOCAL\" \"$REMOTE\"
+    cmd = \"/mnt/c/Program Files/Beyond Compare 4/BComp.exe\" /automerge \"$LOCAL\" \"$REMOTE\"
 [merge]
 	tool = bc-windows
 [mergetool]
@@ -81,7 +81,11 @@
 [mergetool "bc-windows"]
     keepBackup = false
     trustExitCode = true
-    cmd = \"/mnt/c/Program Files/Beyond Compare 4/BComp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+    cmd = \"/mnt/c/Program Files/Beyond Compare 4/bcompare\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+[mergetool "auto"]
+    keepBackup = false
+    trustExitCode = true
+    cmd = \"/mnt/c/Program Files/Beyond Compare 4/bcompare\" -automerge -ignoreunimportant -reviewconflicts \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 [gui]
     commitmsgwidth = 72
 [grep]
@@ -89,3 +93,5 @@
 	trustExitCode = true
 [hub]
 protocol = https
+[log]
+	date = local
