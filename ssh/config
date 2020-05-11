@@ -1,3 +1,8 @@
+Host dnd-github
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/keys/dnd-github
+
 Host github-other
     Hostname github.com
     User git
