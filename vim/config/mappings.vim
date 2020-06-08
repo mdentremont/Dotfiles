@@ -77,7 +77,7 @@ nnoremap Q :
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
 " Move around windows
-" tmux split plugin takes care of these now
+" Note: tmux split plugin takes care of these now
 "nnoremap <C-l> l
 "nnoremap <C-h> h
 "nnoremap <C-k> k
@@ -85,21 +85,23 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 "map <C-a> 
 
 " Switch tabs
-nmap <C-S-tab> :tabprevious<cr>
-nmap <C-tab> :tabnext<cr>
-nmap <C-t> :tabnew<cr>
-map <C-t> :tabnew<cr>
-map <C-S-tab> :tabprevious<cr>
-map <C-tab> :tabnext<cr>
-imap <C-S-tab> <ESC>:tabprevious<cr>i
-imap <C-tab> <ESC>:tabnext<cr>i
-imap <C-t> <ESC>:tabnew<cr>
+" Note: I don't think I've ever used vim tabs, disabling for now so <C-T> can
+"       be used for indenting
+"nmap <C-S-tab> :tabprevious<cr>
+"nmap <C-tab> :tabnext<cr>
+"nmap <C-t> :tabnew<cr>
+"map <C-t> :tabnew<cr>
+"map <C-S-tab> :tabprevious<cr>
+"map <C-tab> :tabnext<cr>
+"imap <C-S-tab> <ESC>:tabprevious<cr>i
+"imap <C-tab> <ESC>:tabnext<cr>i
+"imap <C-t> <ESC>:tabnew<cr>
 
 " Tab configuration
-map <leader>tn :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+"map <leader>tn :tabnew<cr>
+"map <leader>te :tabedit
+"map <leader>tc :tabclose<cr>
+"map <leader>tm :tabmove
 
 " CtrlP buffer list
 nnoremap <Space> :CtrlPBuffer<CR>
