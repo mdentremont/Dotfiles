@@ -6,11 +6,6 @@ then
 fi
 alias o='open "$@"'
 
-# Use apt-fast if it exists
-if hash apt-fast 2>/dev/null; then
-    alias apt-get="apt-fast"
-fi
-
 if hash ember 2>/dev/null; then
     alias e='ember'
 fi
