@@ -79,6 +79,8 @@ set autoread
 " chdir for each open file
 set autochdir
 
+set clipboard+=unnamed
+
 " Add BBNDK tags to the tags list
 "set tags=./tags/;/,$GIT_HOME/tags;/
 
