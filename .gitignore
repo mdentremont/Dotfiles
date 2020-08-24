@@ -1,5 +1,6 @@
 ssh/authorized_keys
 ssh/id_rsa
+ssh/id_rsa.pub
 ssh/keys
 ssh/known_hosts
 tmux/plugins
