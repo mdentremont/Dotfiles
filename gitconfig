@@ -2,8 +2,8 @@
     autocrlf = input
     editor = nvim
     excludesfile = ~/.gitignore_global
-	fileMode = false
-	safecrlf = false
+    fileMode = false
+    safecrlf = false
 [user]
     email = mattdentremont@gmail.com
     name = Matt d'Entremont
@@ -60,7 +60,7 @@
 [rerere]
     enabled = 1
 [push]
-	default = nothing
+    default = nothing
 [color]
     ui = 1
     branch = auto
@@ -74,10 +74,10 @@
 [difftool "bc-windows"]
     cmd = \"/mnt/c/Program Files/Beyond Compare 4/BComp.exe\" /automerge \"$LOCAL\" \"$REMOTE\"
 [merge]
-	tool = bc-windows
+    tool = bc-windows
 [mergetool]
     prompt = false
-	keepBackup = false
+    keepBackup = false
 [mergetool "bc-windows"]
     keepBackup = false
     trustExitCode = true
@@ -90,8 +90,8 @@
     commitmsgwidth = 72
 [grep]
     lineNumber = true
-	trustExitCode = true
+    trustExitCode = true
 [hub]
-protocol = https
+    protocol = https
 [log]
-	date = local
+    date = local
