@@ -69,6 +69,8 @@ dotfiles:
   nvim-autoload:
     dst: ~/.config/nvim/autoload
     src: vim/autoload
+    upignore:
+      - "*"
 
 profiles:
   TG-1433:
