@@ -3,13 +3,8 @@ alias ls='ls --color'
 alias o='open "$@"'
 alias bdt-ssh='bdt -CLI -r "SSH" --rtasUser="mdentremont"'
 
-# Use apt-fast if it exists
-if hash apt-fast 2>/dev/null; then
-    alias apt-get="apt-fast"
-fi
-
 function gv { ( gvim -f "$@" & ) &>/dev/null ; }
-#complete -r gv 
+#complete -r gv
 
 # Git aliases
 alias g="git"
