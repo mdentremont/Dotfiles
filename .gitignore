@@ -7,3 +7,4 @@ tmux/plugins
 !tmux/plugins/tpm
 vim/bundle
 config/configstore
+*.pyc
