@@ -8,11 +8,6 @@ if test (uname) != Darwin
     abbr ls ls --color
 end
 
-# Use apt-fast if it exists
-if type -q apt-fast
-    alias apt-get="apt-fast"
-end
-
 if type -q ember
     abbr e ember
 end
@@ -39,7 +34,6 @@ end
 
 # Fix ag colours
 alias ag='ag --color-line="0;33" --color-path="0;32"'
-
 
 # Alias gv to gvim if it exists
 if type -q gvim
@@ -86,7 +80,7 @@ if type -q git
     end
 
     function get_remote_target_branches
-        git for-each-ref --format='%(refname)' refs/remotes/origin/bugfix refs/remotes/origin/utilities refs/remotes/origin/rc refs/remotes/origin/feature/ refs/remotes/origin/hotfix/ refs/remotes/origin/rc/ refs/remotes/origin/bugfixdrop refs/remotes/origin/misc/high refs/remotes/origin/misc/low refs/remotes/origin/misc/drop 2>/dev/null | sed 's|^refs/remotes/origin/||'
+        git for-each-ref --format='%(refname)' refs/remotes/origin/bugfix refs/remotes/origin/utilities refs/remotes/origin/rc refs/remotes/origin/feature/ refs/remotes/origin/hotfix/ refs/remotes/origin/rc/ refs/remotes/origin/bugfixdrop refs/remotes/origin/misc/high refs/remotes/origin/misc/low refs/remotes/origin/misc/drop refs/remotes/origin/misc/test 2>/dev/null | sed 's|^refs/remotes/origin/||'
     end
 
     function git_copy_head
@@ -101,12 +95,12 @@ if type -q git
         end
         get_remote_target_branches | while read target_branch
             git for-each-ref --format='%(refname:short)' "--merged=origin/$target_branch" $refs 2>/dev/null
-        end | sort -u | grep -vE '(^|/)(rc/.*|bugfix|bugfixdrop|feature/.*|production|master|rc|translations|utilities|hotfix)$'
+        end | sort -u | grep -vE '(^|/)(rc/.*|bugfix|bugfixdrop|feature/.*|misc/.*|production|master|rc|translations|utilities|hotfix)$'
     end
 
     function git_cleanup_old_branches
         git fetch
-        for branch in (git branch -r --no-merged origin/production | cut -d/ -f2- | grep -v -e '^production' -e '^bugfix' -e '^itk-release' -e '^utilities' -e '^feature/' -e '^hotfix/' -e '^qa-drop' -e '^misc/drop' -e '^misc/low' -e '^misc/high')
+        for branch in (git branch -r --no-merged origin/production | cut -d/ -f2- | grep -v -e '^production' -e '^bugfix' -e '^itk-release' -e '^utilities' -e '^feature/' -e '^hotfix/' -e '^qa-drop' -e '^misc/*' )
             if [ -z "(git log -1 --since='6 month ago' -s origin/$branch)" ]
                 git push --delete origin $branch
             end
@@ -127,6 +121,8 @@ if uname -a | grep -q 'Microsoft'
 
 end
 
+abbr bat batcat
+abbr v nvim
 abbr vi nvim
 abbr vim nvim
 
