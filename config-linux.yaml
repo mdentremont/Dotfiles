@@ -1,3 +1,10 @@
+# https://github.com/deadc0de6/dotdrop/wiki/installation
+#
+# git su
+# pip3 install --user -r dotdrop/requirements.txt
+# ./dotdrop/bootstrap.sh
+# ./dotdrop.sh install --cfg=~/Dotfiles/config-linux.yaml
+#
 config:
   backup: true
   banner: true
@@ -10,10 +17,10 @@ config:
 dotfiles:
   bash_history:
     dst: ~/.bash_aliases
-    src: bash_aliases 
+    src: bash_aliases
   bashrc:
     dst: ~/.bashrc
-    src: bashrc 
+    src: bashrc
   bin:
     dst: ~/bin
     src: bin
@@ -32,9 +39,6 @@ dotfiles:
   gitignore_global:
     dst: ~/.gitignore_global
     src: gitignore_global
-  nvim:
-    dst: ~/.config/nvim
-    src: config/nvim
   ssh:
     dst: ~/.ssh
     src: ssh
@@ -59,6 +63,13 @@ dotfiles:
   zshrc:
     dst: ~/.zshrc
     src: zshrc
+  nvim:
+    dst: ~/.config/nvim
+    src: config/nvim
+  nvim-autoload:
+    dst: ~/.config/nvim/autoload
+    src: vim/autoload
+
 profiles:
   TG-1433:
     dotfiles:

@@ -58,7 +58,9 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use bash for shells to avoid delays in zsh starting up
-set shell=/bin/bash
+if has('unix')
+    set shell=/bin/bash
+endif
 
 set history=1000
 

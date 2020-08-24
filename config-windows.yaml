@@ -1,0 +1,46 @@
+# https://github.com/deadc0de6/dotdrop/wiki/installation
+#
+# git su
+# pip3 install --user -r dotdrop/requirements.txt
+# ./dotdrop/bootstrap.sh
+# ./dotdrop.sh install --cfg=/mnt/Users/matt.dentremont/Dotfiles/config-windows.yaml
+#
+config:
+  backup: true
+  banner: true
+  create: true
+  dotpath: /mnt/c/Users/matt.dentremont/Dotfiles
+  keepdot: false
+  link_dotfile_default: nolink
+  link_on_import: nolink
+  longkey: false
+dotfiles:
+  bin:
+    dst: /mnt/c/Users/matt.dentremont/bin
+    src: bin
+  gitconfig:
+    dst: /mnt/c/Users/matt.dentremont/.gitconfig
+    src: gitconfig
+  gitignore_global:
+    dst: /mnt/c/Users/matt.dentremont/.gitignore_global
+    src: gitignore_global
+  ssh:
+    dst: /mnt/c/Users/matt.dentremont/.ssh
+    src: ssh
+  vim:
+    dst: /mnt/c/Users/matt.dentremont/.vim
+    src: vim
+  vimrc:
+    dst: /mnt/c/Users/matt.dentremont/.vimrc
+    src: vimrc
+  nvim:
+    dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim
+    src: config/nvim
+  nvim-autoload:
+    dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim/autoload
+    src: vim/autoload
+
+profiles:
+  TG-1433:
+    dotfiles:
+    - ALL
