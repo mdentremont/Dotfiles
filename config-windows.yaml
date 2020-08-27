@@ -57,13 +57,11 @@ dotfiles:
     dst: /mnt/c/Users/matt.dentremont/.vimrc
     src: vimrc
   nvim:
-    dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim
-    src: config/nvim
+    dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim/init.vim
+    src: config/nvim/init.vim
   nvim-autoload:
-    dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim/autoload
-    src: vim/autoload
-    upignore:
-      - "*"
+    dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim/autoload/plug.vim
+    src: vim/autoload/plug.vim
 
 profiles:
   TG-1433:
