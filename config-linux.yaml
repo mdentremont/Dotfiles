@@ -5,6 +5,9 @@
 # ./dotdrop/bootstrap.sh
 # ./dotdrop.sh install --cfg=~/Dotfiles/config-linux.yaml
 #
+variables:
+  beyond_compare_path: /mnt/c/Users/matt.dentremont/Program Files/Beyond Compare 4/BCompare.exe
+
 config:
   backup: true
   banner: true

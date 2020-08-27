@@ -5,6 +5,9 @@
 # ./dotdrop/bootstrap.sh
 # ./dotdrop.sh install --cfg=/mnt/Users/matt.dentremont/Dotfiles/config-windows.yaml
 #
+variables:
+  beyond_compare_path: C:\\Program Files\\Beyond Compare 4\\BComp.exe
+  
 config:
   backup: true
   banner: true
@@ -14,6 +17,8 @@ config:
   link_dotfile_default: nolink
   link_on_import: nolink
   longkey: false
+  workdir: /mnt/c/Users/matt.dentremont/.config/dotdrop
+
 dotfiles:
   bin:
     dst: /mnt/c/Users/matt.dentremont/bin
@@ -21,6 +26,7 @@ dotfiles:
   gitconfig:
     dst: /mnt/c/Users/matt.dentremont/.gitconfig
     src: gitconfig
+
   gitignore_global:
     dst: /mnt/c/Users/matt.dentremont/.gitignore_global
     src: gitignore_global
