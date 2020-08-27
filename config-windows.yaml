@@ -7,7 +7,7 @@
 #
 variables:
   beyond_compare_path: C:\\Program Files\\Beyond Compare 4\\BComp.exe
-  
+
 config:
   backup: true
   banner: true
@@ -20,13 +20,19 @@ config:
   workdir: /mnt/c/Users/matt.dentremont/.config/dotdrop
 
 dotfiles:
+  bcomp:
+    dst: /mnt/c/Users/matt.dentremont/bin/bcomp
+    src: platform-specific-bin/bcomp-windows
   bin:
     dst: /mnt/c/Users/matt.dentremont/bin
     src: bin
+    cmpignore:
+      - "bcomp*"
+    upignore:
+      - "bcomp*"
   gitconfig:
     dst: /mnt/c/Users/matt.dentremont/.gitconfig
     src: gitconfig
-
   gitignore_global:
     dst: /mnt/c/Users/matt.dentremont/.gitignore_global
     src: gitignore_global
@@ -35,7 +41,18 @@ dotfiles:
     src: ssh
   vim:
     dst: /mnt/c/Users/matt.dentremont/.vim
-    src: vim
+    instignore:
+      - "backup"
+      - "bundle"
+      - "colors"
+    cmpignore:
+      - "backup"
+      - "bundle"
+      - "colors"
+    upignore:
+      - "backup"
+      - "bundle"
+      - "colors"
   vimrc:
     dst: /mnt/c/Users/matt.dentremont/.vimrc
     src: vimrc

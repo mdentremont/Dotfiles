@@ -1,0 +1,2 @@
+#!/bin/sh
+/mnt/c/Program\ Files/Beyond\ Compare\ 4/BComp.exe "$@"

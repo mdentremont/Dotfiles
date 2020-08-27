@@ -1,0 +1,2 @@
+#!/usr/bin/env pwsh
+& "C:\Program Files\Beyond Compare 4\BComp.exe" @args

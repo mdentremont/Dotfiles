@@ -5,9 +5,6 @@
 # ./dotdrop/bootstrap.sh
 # ./dotdrop.sh install --cfg=~/Dotfiles/config-linux.yaml
 #
-variables:
-  beyond_compare_path: /mnt/c/Users/matt.dentremont/Program Files/Beyond Compare 4/BCompare.exe
-
 config:
   backup: true
   banner: true
@@ -16,7 +13,7 @@ config:
   keepdot: false
   link_dotfile_default: link
   link_on_import: link
-  longkey: false
+
 dotfiles:
   bash_history:
     dst: ~/.bash_aliases
@@ -24,9 +21,17 @@ dotfiles:
   bashrc:
     dst: ~/.bashrc
     src: bashrc
+  bcomp:
+    dst: ~/bin/bcomp
+    src: platform-specific-bin/bcomp-linux
   bin:
-    dst: ~/bin
+    dst: ~/bin/
     src: bin
+    link: link_children
+    cmpignore:
+      - 'bcomp*'
+    upignore:
+      - 'bcomp*'
   checkoutmanager.cfg:
     dst: ~/.checkoutmanager.cfg
     src: checkoutmanager.cfg
@@ -57,6 +62,19 @@ dotfiles:
   vim:
     dst: ~/.vim
     src: vim
+    link: link_children
+    instignore:
+      - "backup"
+      - "bundle"
+      - "colors"
+    cmpignore:
+      - "backup"
+      - "bundle"
+      - "colors"
+    upignore:
+      - "backup"
+      - "bundle"
+      - "colors"
   vimrc:
     dst: ~/.vimrc
     src: vimrc

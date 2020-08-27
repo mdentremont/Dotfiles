@@ -76,7 +76,7 @@
 [difftool]
     prompt = false
 [difftool "bc-windows"]
-    cmd = \"{{@@ beyond_compare_path @@}}\" -automerge \"$LOCAL\" \"$REMOTE\"
+    cmd = bcomp -automerge \"$LOCAL\" \"$REMOTE\"
 [merge]
     tool = bc-windows
 [mergetool]
@@ -85,11 +85,11 @@
 [mergetool "bc-windows"]
     keepBackup = false
     trustExitCode = true
-    cmd = \"{{@@ beyond_compare_path @@}}\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+    cmd = bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 [mergetool "auto"]
     keepBackup = false
     trustExitCode = true
-    cmd = \"{{@@ beyond_compare_path @@}}\" -automerge -ignoreunimportant -reviewconflicts \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+    cmd = bcomp -automerge -ignoreunimportant -reviewconflicts \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 [gui]
     commitmsgwidth = 72
 [grep]
