@@ -1,2 +1,3 @@
 #!/usr/bin/env pwsh
-& "C:\Program Files\Beyond Compare 4\BComp.exe" @args
+$p = Start-Process "C:\Program Files\Beyond Compare 4\BComp.exe" -ArgumentList $args -Wait -NoNewWindow -PassThru
+exit $p.ExitCode
