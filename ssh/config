@@ -16,6 +16,11 @@ Host pi-remote
     ProxyCommand ssh -q pi-local nc 192.168.2.52 22
     User root
 
+Host proplugins-gitlab
+    Hostname git.master-technology.com
+    User git
+    IdentityFile ~/.ssh/keys/gitlab
+
 Host torrent-local
     HostName 192.168.2.53
     User pi

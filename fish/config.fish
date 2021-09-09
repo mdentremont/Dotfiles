@@ -32,8 +32,8 @@ if type -q fuck
     end
 end
 
-# Fix ag colours
-alias ag='ag --color-line="0;33" --color-path="0;32"'
+# Use ripgrep instead of silver searcher
+abbr ag rg
 
 # Alias gv to gvim if it exists
 if type -q gvim
@@ -72,11 +72,11 @@ if type -q git
     abbr unwip git unwip
 
     function git_cleanup_branches
-        git fetch; and git_merged_branches | cut -d/ -f2- | xargs -r -n 1 git branch -D
+        git fetch; and git_merged_branches | cut -d/ -f2- | xargs --no-run-if-empty --max-args=1 git branch -D
     end
 
     function git_cleanup_remote_branches
-        git fetch; and git_merged_branches -r | sed -e 's|^origin/||' | xargs --no-run-if-empty --max-args=1 git push origin --delete
+        git fetch; and git_merged_branches -r | sed -e 's|^origin/||' -e 's|\'|\\\'|' | xargs --no-run-if-empty --max-args=1 git push --delete origin
     end
 
     function get_remote_target_branches
@@ -117,8 +117,10 @@ if uname -a | grep -q 'Microsoft'
 
     abbr src cd $WIN_HOME/git/intellitrack-service
     abbr rel cd $WIN_HOME/git/intellitrack-service-release
-    abbr desk cd $WIN_HOME/Desktop
+    abbr other cd $WIN_HOME/git/intellitrack-service-other
+    abbr desk cd $DESKTOP/Desktop
 
+    alias gh=gh.exe
 end
 
 abbr bat batcat
