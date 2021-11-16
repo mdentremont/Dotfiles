@@ -150,4 +150,3 @@ bind '"\e."':yank-last-arg
 
 # Allow fish to take over the shell if it exists
 hash fish 2>/dev/null && exec fish
-
