@@ -67,3 +67,6 @@ profiles:
   TG-1433:
     dotfiles:
     - ALL
+  TG-1700:
+    dotfiles:
+    - ALL
