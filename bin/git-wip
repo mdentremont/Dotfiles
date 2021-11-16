@@ -1,0 +1,2 @@
+#!/bin/sh
+br="$(git rev-parse --abbrev-ref HEAD)" && sha="$(git rev-parse --short HEAD)" && name=${br:-${sha}} && git add . && git commit -m "WIP: ${name}"
