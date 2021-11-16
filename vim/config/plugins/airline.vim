@@ -9,3 +9,6 @@ endif
 
 let g:airline_theme='wombat'
 
+" Needed until: https://github.com/tonsky/FiraCode/issues/1243
+let g:airline_symbols = {}
+let g:airline_symbols.colnr='℅'

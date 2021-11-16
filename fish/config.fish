@@ -118,7 +118,7 @@ if uname -a | grep -q 'Microsoft'
     abbr src cd $WIN_HOME/git/intellitrack-service
     abbr rel cd $WIN_HOME/git/intellitrack-service-release
     abbr other cd $WIN_HOME/git/intellitrack-service-other
-    abbr desk cd $DESKTOP/Desktop
+    abbr desk cd $DESKTOP
 
     alias gh=gh.exe
 end

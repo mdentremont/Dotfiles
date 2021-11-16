@@ -169,7 +169,7 @@ set t_Co=256
 "endif
 
 set background=dark
-colorscheme wombat256mod
+colorscheme wombat
 
 set encoding=utf8
 set termencoding=utf-8
