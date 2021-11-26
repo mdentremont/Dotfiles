@@ -45,10 +45,6 @@ end
 
 # Only set git aliases if git exists
 if type -q git
-    if type -q git.exe
-        alias git git.exe
-    end
-
     abbr g git
 
     abbr a git add

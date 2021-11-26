@@ -1,0 +1,26 @@
+#!/bin/sh
+# https://gist.github.com/jasonboukheir/3fdab92ece236744528447a4f7f5de00#gistcomment-3540002
+
+# Also, watch this: https://github.com/rygwdn/dotfiles/blob/master/bin/gite
+
+GIT_WINDOWS="/mnt/c/Program Files/Git/cmd/git.exe"
+GIT_LINUX="/usr/bin/git"
+
+case "$(pwd -P)" in
+/mnt/?/*)
+  case "$@" in
+  # Needed to fix fish prompt, but it breaks things like paging, colours, etc
+  rev-parse*)
+    # Linux seems to be faster
+    #exec "$GIT_WINDOWS" "$@" | sed "s#\([A-E]\):#/mnt/\L\1#"
+    exec "$GIT_LINUX" "$@"
+    ;;
+  *)
+    exec "$GIT_WINDOWS" "$@"
+    ;;
+  esac
+  ;;
+*)
+  exec "$GIT_LINUX" "$@"
+  ;;
+esac
