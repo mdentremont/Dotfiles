@@ -30,6 +30,9 @@ dotfiles:
       - "bcomp*"
     upignore:
       - "bcomp*"
+  ideavimrc:
+    dst: /mnt/c/Users/matt.dentremont/.ideavimrc
+    src: ideavimrc
   gitconfig:
     dst: /mnt/c/Users/matt.dentremont/.gitconfig
     src: gitconfig
