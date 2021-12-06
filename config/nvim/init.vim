@@ -182,6 +182,7 @@ set ffs=unix,dos,mac
 set backup
 set backupdir=~/.vim/backup
 
+set nofixeol
 set noswapfile
 
 "Persistent undo
