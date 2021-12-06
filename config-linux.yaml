@@ -63,21 +63,21 @@ dotfiles:
     dst: ~/.vim
     src: vim
     link: link_children
-    instignore:
-      - "backup"
-      - "bundle"
-      - "colors"
-      - "doc"
     cmpignore:
-      - "backup"
-      - "bundle"
-      - "colors"
-      - "doc"
+      - 'backup'
+      - 'bundle'
+      - 'colors'
+      - 'doc'
     upignore:
-      - "backup"
-      - "bundle"
-      - "colors"
-      - "doc"
+      - 'backup'
+      - 'bundle'
+      - 'colors'
+      - 'doc'
+    instignore:
+      - 'backup'
+      - 'bundle'
+      - 'colors'
+      - 'doc'
   vimrc:
     dst: ~/.vimrc
     src: vimrc
@@ -94,7 +94,7 @@ dotfiles:
     dst: ~/.config/nvim/autoload
     src: vim/autoload
     upignore:
-      - "*"
+      - '*'
 
 profiles:
   TG-1433:

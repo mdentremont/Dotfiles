@@ -6,5 +6,7 @@ ssh/known_hosts
 tmux/plugins
 !tmux/plugins/tpm
 vim/bundle
+vim/colors
+vim/doc
 config/configstore
 *.pyc
