@@ -72,7 +72,7 @@ if type -q git
     end
 
     function git_cleanup_remote_branches
-        git fetch; and git_merged_branches -r | sed -e 's|^origin/||' -e 's|\'|\\\'|' | xargs --no-run-if-empty --max-args=1 git push --delete origin
+        git fetch; and git_merged_branches -r | sed -e 's|^origin/||' -e 's|\'|\\\'|' | xargs echo#--no-run-if-empty --max-args=1 git push --delete origin
     end
 
     function get_remote_target_branches
@@ -91,7 +91,7 @@ if type -q git
         end
         get_remote_target_branches | while read target_branch
             git for-each-ref --format='%(refname:short)' "--merged=origin/$target_branch" $refs 2>/dev/null
-        end | sort -u | grep -vE '(^|/)(rc/.*|bugfix|bugfixdrop|feature/.*|misc/.*|production|master|rc|translations|utilities|hotfix)$'
+        end | sort -u | grep -vE '(^|/)(rc/.*|bugfix|bugfixdrop|feature/.*|misc/.*|production|master|rc|rc-next|translations|utilities|hotfix|HEAD)$'
     end
 
     function git_cleanup_old_branches
@@ -114,6 +114,7 @@ if uname -a | grep -q 'Microsoft'
     abbr src cd $WIN_HOME/git/intellitrack-service
     abbr rel cd $WIN_HOME/git/intellitrack-service-release
     abbr other cd $WIN_HOME/git/intellitrack-service-other
+    abbr core cd $WIN_HOME/git/intellitrack-service-core
     abbr desk cd $DESKTOP
 
     alias gh=gh.exe
