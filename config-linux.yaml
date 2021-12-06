@@ -67,14 +67,17 @@ dotfiles:
       - "backup"
       - "bundle"
       - "colors"
+      - "doc"
     cmpignore:
       - "backup"
       - "bundle"
       - "colors"
+      - "doc"
     upignore:
       - "backup"
       - "bundle"
       - "colors"
+      - "doc"
   vimrc:
     dst: ~/.vimrc
     src: vimrc

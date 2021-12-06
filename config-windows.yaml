@@ -48,20 +48,27 @@ dotfiles:
       - "backup"
       - "bundle"
       - "colors"
+      - "doc"
     cmpignore:
       - "backup"
       - "bundle"
       - "colors"
+      - "doc"
     upignore:
       - "backup"
       - "bundle"
       - "colors"
+      - "doc"
   vimrc:
     dst: /mnt/c/Users/matt.dentremont/.vimrc
     src: vimrc
   nvim:
-    dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim/init.vim
-    src: config/nvim/init.vim
+    dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim
+    src: config/nvim
+    upignore:
+      - "autoload"
+    cmpignore:
+      - "autoload"
   nvim-autoload:
     dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim/autoload/plug.vim
     src: vim/autoload/plug.vim
