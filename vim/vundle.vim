@@ -12,6 +12,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'corntrace/bufexplorer'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
 "Plug 'honza/vim-snippets'
 "Plug 'jmcantrell/vim-virtualenv'

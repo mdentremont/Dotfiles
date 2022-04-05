@@ -72,7 +72,7 @@ if type -q git
     end
 
     function git_cleanup_remote_branches
-        git fetch; and git_merged_branches -r | sed -e 's|^origin/||' -e 's|\'|\\\'|' | xargs echo#--no-run-if-empty --max-args=1 git push --delete origin
+        git fetch; and git_merged_branches -r | sed -e 's|^origin/||' -e "s|'|\\\\'|" | xargs --no-run-if-empty --max-args=1 git push --delete origin
     end
 
     function get_remote_target_branches

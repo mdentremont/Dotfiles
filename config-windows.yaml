@@ -23,13 +23,15 @@ dotfiles:
   bcomp:
     dst: /mnt/c/Users/matt.dentremont/bin/bcomp
     src: platform-specific-bin/bcomp-windows
+    chmod: '755'
   bin:
     dst: /mnt/c/Users/matt.dentremont/bin
     src: bin
     cmpignore:
-      - "bcomp*"
+    - bcomp*
     upignore:
-      - "bcomp*"
+    - bcomp*
+    chmod: '755'
   ideavimrc:
     dst: /mnt/c/Users/matt.dentremont/.ideavimrc
     src: ideavimrc
@@ -45,20 +47,21 @@ dotfiles:
   vim:
     dst: /mnt/c/Users/matt.dentremont/.vim
     instignore:
-      - "backup"
-      - "bundle"
-      - "colors"
-      - "doc"
+    - backup
+    - bundle
+    - colors
+    - doc
     cmpignore:
-      - "backup"
-      - "bundle"
-      - "colors"
-      - "doc"
+    - backup
+    - bundle
+    - colors
+    - doc
     upignore:
-      - "backup"
-      - "bundle"
-      - "colors"
-      - "doc"
+    - backup
+    - bundle
+    - colors
+    - doc
+    chmod: '755'
   vimrc:
     dst: /mnt/c/Users/matt.dentremont/.vimrc
     src: vimrc
@@ -66,9 +69,10 @@ dotfiles:
     dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim
     src: config/nvim
     upignore:
-      - "autoload"
+    - autoload
     cmpignore:
-      - "autoload"
+    - autoload
+    chmod: '755'
   nvim-autoload:
     dst: /mnt/c/Users/matt.dentremont/AppData/Local/nvim/autoload/plug.vim
     src: vim/autoload/plug.vim

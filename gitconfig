@@ -55,6 +55,7 @@
 	unwip = "!git-unwip"
 	head = !git log -n1
 	find-merge = "!git-find-merge"
+	clearvs = clean -dX -f -- 'TG*/bin' 'TG*/obj'
 [rerere]
 	enabled = 1
 [push]
