@@ -1,3 +1,7 @@
+if exists('g:vscode')
+    finish
+endif
+
 call plug#begin('~/.vim/bundle')
 
 "if has("unix")
@@ -6,7 +10,6 @@ call plug#begin('~/.vim/bundle')
 "    fc-cache -vf ~/.fonts
 "endif
 
-"
 " original repos on github
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'

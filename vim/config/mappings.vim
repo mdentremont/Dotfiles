@@ -29,11 +29,13 @@ noremap :: ,
 "endif
 " }}}
 
+if !exists('g:vscode')
 " F key mappings {{{
     nnoremap <F5> :GundoToggle<CR>
     nnoremap <F4> :TagbarToggle<CR>
     nnoremap <F3> :NERDTreeToggle<CR>
 " }}}
+endif
 
 " Fast saving {{{
 nmap <leader>w :w!<cr>
@@ -104,7 +106,9 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 "map <leader>tm :tabmove
 
 " CtrlP buffer list
-nnoremap <Space> :CtrlPBuffer<CR>
+if !exists('g:vscode')
+    nnoremap <Space> :CtrlPBuffer<CR>
+endif
 
 " Search for current selection on * or #
 vnoremap <silent> * :call VisualSearch('f')<CR>

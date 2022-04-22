@@ -57,32 +57,34 @@ endif
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use bash for shells to avoid delays in zsh starting up
-if has('unix')
-    set shell=/bin/bash
+if !exists('g:vscode')
+    " Use bash for shells to avoid delays in zsh starting up
+    if has('unix')
+        set shell=/bin/bash
+    endif
+
+    set history=1000
+
+    " Hide a buffer instead of closing (don't lose unsaved changes!)
+    set hidden
+
+    " Enable filetype plugin
+    filetype plugin on
+
+    " Allow indentation to be filetype dependent
+    filetype indent on
+
+    " Set to auto read when a file is changed from the outside
+    set autoread
+
+    " chdir for each open file
+    set autochdir
+
+    " Add BBNDK tags to the tags list
+    "set tags=./tags/;/,$GIT_HOME/tags;/
 endif
 
-set history=1000
-
-" Hide a buffer instead of closing (don't lose unsaved changes!)
-set hidden
-
-" Enable filetype plugin
-filetype plugin on
-
-" Allow indentation to be filetype dependent
-filetype indent on
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" chdir for each open file
-set autochdir
-
 set clipboard+=unnamed
-
-" Add BBNDK tags to the tags list
-"set tags=./tags/;/,$GIT_HOME/tags;/
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
@@ -159,39 +161,43 @@ set t_vb=
 " => Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Enable syntax highlighting
-syntax enable
+if !exists('g:vscode')
+    " Enable syntax highlighting
+    syntax enable
 
-set t_Co=256
+    set t_Co=256
 
-"if !has('gui_running')
-"    let g:rehash256 = 1
-"endif
+    "if !has('gui_running')
+    "    let g:rehash256 = 1
+    "endif
 
-set background=dark
-colorscheme wombat
+    set background=dark
+    colorscheme wombat
 
-set encoding=utf8
-set termencoding=utf-8
+    set encoding=utf8
+    set termencoding=utf-8
 
-set ffs=unix,dos,mac
+    set ffs=unix,dos,mac
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set backup
-set backupdir=~/.vim/backup
+if !exists('g:vscode')
+    set backup
+    set backupdir=~/.vim/backup
 
-set noswapfile
+    set noswapfile
 
-"Persistent undo
-if MySys() == "windows"
-  set undodir=%TMP%
-else
-  set undodir=~/.vim/undodir
+    "Persistent undo
+    if MySys() == "windows"
+      set undodir=%TMP%
+    else
+      set undodir=~/.vim/undodir
+    endif
+
+    set undofile
 endif
-
-set undofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -217,18 +223,19 @@ set wrap
 """"""""""""""""""""""""""""""
 " => Statusline
 """"""""""""""""""""""""""""""
-
-" Format the statusline
-set statusline=%t       "tail of the filename
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%y      "filetype
-" Buf number, help file, modified, read only, preview window flag
-set statusline+=[%n%H%M%R%W]%*\
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+if !exists('g:vscode')
+    " Format the statusline
+    set statusline=%t       "tail of the filename
+    set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+    set statusline+=%{&ff}] "file format
+    set statusline+=%y      "filetype
+    " Buf number, help file, modified, read only, preview window flag
+    set statusline+=[%n%H%M%R%W]%*\
+    set statusline+=%=      "left/right separator
+    set statusline+=%c,     "cursor column
+    set statusline+=%l/%L   "cursor line/total lines
+    set statusline+=\ %P    "percent through file
+endif
 
 set guitablabel=%t
 
@@ -237,7 +244,9 @@ for src in split(glob("~/.vim/config/*.vim"), "\n")
     execute "source " . src
 endfor
 for src in split(glob("~/.vim/config/**/*.vim"), "\n")
-    execute "source " . src
+    if !exists('g:vscode') || src !~ 'config/plugin'
+        execute "source " . src
+    endif
 endfor
 " }}}
 

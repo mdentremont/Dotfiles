@@ -1,3 +1,7 @@
+if exists('g:vscode')
+    finish
+endif
+
 " When vimrc is edited, reload it
 augroup reloadVimRc " {
     autocmd!
