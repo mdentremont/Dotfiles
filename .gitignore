@@ -9,4 +9,5 @@ vim/bundle
 vim/colors
 vim/doc
 config/configstore
+config/nvim/autoload
 *.pyc
