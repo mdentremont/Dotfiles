@@ -14,5 +14,3 @@ for file in $=configs
 do
     source $file
 done
-
-
