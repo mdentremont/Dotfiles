@@ -11,6 +11,7 @@ remove_entry_from_path '/mnt/c/Program Files/nodejs'
 
 path=(
     $HOME/bin
+    /usr/local/bin
     $path
 )
 
