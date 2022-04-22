@@ -34,7 +34,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
 
-#zplug "plugins/brew", from:oh-my-zsh, if:"which brew"
+zplug "plugins/brew", from:oh-my-zsh, if:"which brew"
 
 ### Non oh-my-zsh theme
 #zplug "judgedim/oh-my-zsh-judgedim-theme", use:"judgedim.zsh-theme"
