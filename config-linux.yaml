@@ -15,12 +15,6 @@ config:
   link_on_import: link
 
 dotfiles:
-  bash_history:
-    dst: ~/.bash_aliases
-    src: bash_aliases
-  bashrc:
-    dst: ~/.bashrc
-    src: bashrc
   bcomp:
     dst: ~/bin/bcomp
     src: platform-specific-bin/bcomp-linux
