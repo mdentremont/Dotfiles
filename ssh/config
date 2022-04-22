@@ -7,33 +7,3 @@ Host github-other
     Hostname github.com
     User git
     IdentityFile ~/.ssh/keys/github-other
-
-Host pi-local
-    HostName 192.168.2.52
-    User root
-
-Host pi-remote
-    ProxyCommand ssh -q pi-local nc 192.168.2.52 22
-    User root
-
-Host proplugins-gitlab
-    Hostname git.master-technology.com
-    User git
-    IdentityFile ~/.ssh/keys/gitlab
-
-Host torrent-local
-    HostName 192.168.2.53
-    User pi
-
-Host torrent-remote
-    HostName proxy2.remot3.it
-    Port 36134
-    User pi
-
-Host vpn-local
-    HostName 192.168.2.24
-    User pi
- 
-Host vpn-remote
-    ProxyCommand ssh -q pi-local nc 192.168.2.24 22
-    User pi
