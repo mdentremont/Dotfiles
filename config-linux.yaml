@@ -100,9 +100,9 @@ dotfiles:
       - '*'
 
 profiles:
-  TG-1433:
+  Matts-MacBook-Pro.local:
     dotfiles:
     - ALL
-  TG-1700:
+  spin:
     dotfiles:
     - ALL
