@@ -12,7 +12,7 @@
 [interactive]
 	diffFilter = delta --24-bit-color=always --dark --color-only --keep-plus-minus-markers
 [user]
-	email = mattdentremont@gmail.com
+	email = matt.dentremont@shopify.com
 	name = Matt d'Entremont
 [gui]
 	gcwarning = false
@@ -100,4 +100,11 @@
 [rebase]
 	autoStash = false
 [init]
-	defaultBranch = main
+    defaultBranch = main
+[include]
+	path = /Users/mattdentremont/.config/dev/gitconfig
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
