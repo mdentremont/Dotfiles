@@ -1,0 +1,27 @@
+export GEN_CUSTOM_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump_$ZSH_VERSION"
+
+if [[ ! -s ~/.zgenom ]]; then
+    git clone https://github.com/jandamm/zgenom.git ~/.zgenom
+fi
+
+source ~/.zgenom/zgenom.zsh
+
+zgenom autoupdate
+
+if ! zgenom saved; then
+  zgenom ohmyzsh
+
+  # vim bindings
+  zgenom load mdentremont/zsh-vim-mode
+  zgenom ohmyzsh plugins/vi-mode
+
+  zgenom load zsh-users/zsh-completions
+  zgenom load zsh-users/zsh-history-substring-search
+  zgenom load zsh-users/zsh-syntax-highlighting
+
+  hash brew 2>/dev/null && zgenom ohmyzsh plugins/brew
+
+  zgenom load mdentremont/girazz girazz.zsh-theme
+
+  zgenom save
+fi

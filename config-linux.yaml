@@ -75,12 +75,9 @@ dotfiles:
   vimrc:
     dst: ~/.vimrc
     src: vimrc
-  zplug:
-    dst: ~/.zplug
-    src: zplug
-  zplugrc:
-    dst: ~/.zplugrc
-    src: zplugrc
+  zgenomrc:
+    dst: ~/.zgenomrc
+    src: zgenomrc
   zsh.d:
     dst: ~/.zsh.d
     src: zsh.d

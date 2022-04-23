@@ -1,4 +1,4 @@
-source ~/.zplugrc
+source ~/.zgenomrc
 
 # Reduce the timeout on escape sequences
 export KEYTIMEOUT=1
