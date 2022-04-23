@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-# Needed for zplug reload to succeed
-#set -x
-
 function remove_entry_from_path {
     path[${path[(i)$1]}]=()
 }
