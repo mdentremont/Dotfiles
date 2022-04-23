@@ -1,0 +1,2 @@
+#compdef _spin spin
+source <(spin completion)

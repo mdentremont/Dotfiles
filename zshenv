@@ -9,6 +9,7 @@ function remove_entry_from_path {
 
 remove_entry_from_path '/mnt/c/Program Files/nodejs'
 
+fpath=(~/.oh-my-zsh/completions $fpath)
 path=(
     $HOME/bin
     /usr/local/bin

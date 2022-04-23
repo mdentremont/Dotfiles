@@ -41,6 +41,9 @@ dotfiles:
   gitignore_global:
     dst: ~/.gitignore_global
     src: gitignore_global
+  oh-my-zsh:
+    src: oh-my-zsh
+    dst: ~/.oh-my-zsh
   ssh:
     dst: ~/.ssh
     src: ssh
