@@ -4,13 +4,13 @@
 	excludesfile = ~/.gitignore_global
 	fileMode = false
 	safecrlf = false
-	pager = delta --24-bit-color=always --dark --keep-plus-minus-markers --file-color=bright-blue --hunk-color=bright-blue
+	pager = delta --24-bit-color=always --dark --keep-plus-minus-markers
 [delta]
 	plus-color = "#012800"
 	minus-color = "#340001"
 	syntax-theme = Monokai Extended Origin
 [interactive]
-	diffFilter = delta --24-bit-color=always --dark --color-only --keep-plus-minus-markers --file-color=bright-blue --hunk-color=bright-blue
+	diffFilter = delta --24-bit-color=always --dark --color-only --keep-plus-minus-markers
 [user]
 	email = mattdentremont@gmail.com
 	name = Matt d'Entremont
