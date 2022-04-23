@@ -6,7 +6,7 @@ then
 fi
 alias o='open "$@"'
 
-if has nvim 2>/dev/null; then
+if hash nvim 2>/dev/null; then
     alias vi=nvim
     alias vim=nvim
 else
