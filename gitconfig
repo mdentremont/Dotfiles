@@ -99,3 +99,5 @@
 	prune = false
 [rebase]
 	autoStash = false
+[init]
+	defaultBranch = main
