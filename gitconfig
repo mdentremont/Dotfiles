@@ -35,7 +35,8 @@
 	fpr = "!git-fpr"
 	fa = fetch --all --prune
 	fixup = commit --amend --no-edit
-	l = log --graph
+	l = log
+	lg = log --graph
 	lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	lost = "!git-lost"
 	m = merge
