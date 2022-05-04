@@ -15,6 +15,7 @@ if ! zgenom saved; then
   zgenom load mdentremont/zsh-vim-mode
   zgenom ohmyzsh plugins/vi-mode
   zgenom ohmyzsh plugins/ripgrep
+  zgenom ohmyzsh plugins/fzf
 
   zgenom load zsh-users/zsh-completions
   zgenom load zsh-users/zsh-history-substring-search
