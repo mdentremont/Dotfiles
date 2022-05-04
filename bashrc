@@ -150,3 +150,7 @@ bind '"\e."':yank-last-arg
 
 # Allow fish to take over the shell if it exists
 hash fish 2>/dev/null && exec fish
+
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
