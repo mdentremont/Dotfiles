@@ -1,8 +1,13 @@
+call plug#begin('~/.vim/bundle')
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpop/vim-surround'
+
 if exists('g:vscode')
+    call plug#end()
     finish
 endif
 
-call plug#begin('~/.vim/bundle')
 
 "if has("unix")
 "    echo "Installing patched fonts"
@@ -31,7 +36,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'rygwdn/tagswitch'
 "Plug 'rking/ag.vim'
 "Plug 'SirVer/ultisnips'
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 " syntax highlighting support for many languages
@@ -44,7 +48,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 "Plug 'vimoutliner/vimoutliner'
 Plug 'vim-airline/vim-airline'
