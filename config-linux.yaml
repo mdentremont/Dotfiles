@@ -33,6 +33,10 @@ dotfiles:
   gitignore_global:
     dst: ~/.gitignore_global
     src: gitignore_global
+  karabiner.json:
+    src: config/karabiner/karabiner.json
+    dst: ~/.config/karabiner/karabiner.json
+    chmod: '600'
   oh-my-zsh:
     src: oh-my-zsh
     dst: ~/.oh-my-zsh
@@ -90,7 +94,6 @@ dotfiles:
     src: vim/autoload
     upignore:
     - '*'
-
 profiles:
   Matts-MacBook-Pro.local:
     dotfiles:
