@@ -82,6 +82,9 @@ if !exists('g:vscode')
 
     " Add BBNDK tags to the tags list
     "set tags=./tags/;/,$GIT_HOME/tags;/
+else
+    " VSpaceCode - https://github.com/VSpaceCode/VSpaceCode/issues/126#issuecomment-1073238557
+    nnoremap <space> :call VSCodeNotify('whichkey.show')<CR>
 endif
 
 set clipboard+=unnamed
