@@ -68,7 +68,9 @@ if hash git 2>/dev/null; then
     alias gs="git status -sb"
 fi
 
-function rm_dangling_docker() {
-    docker volume rm ${docker volume ls -qf dangling=true}
-}
+if hash spin 2>/dev/null; then
+    alias ss='spin shell'
+fi
+
+alias br='bin/rails'
 
