@@ -83,10 +83,6 @@ if type -q git
         git for-each-ref --format='%(refname)' refs/remotes/origin/bugfix refs/remotes/origin/utilities refs/remotes/origin/rc refs/remotes/origin/feature/ refs/remotes/origin/hotfix/ refs/remotes/origin/rc/ refs/remotes/origin/bugfixdrop refs/remotes/origin/misc/high refs/remotes/origin/misc/low refs/remotes/origin/misc/drop refs/remotes/origin/misc/test 2>/dev/null | sed 's|^refs/remotes/origin/||'
     end
 
-    function git_copy_head
-        git rev-parse HEAD | clip.exe
-    end
-
     function git_merged_branches --argument-names 'remoteSwitch'
         if test "$remoteSwitch" = "-r"
             set refs "refs/remotes/"
