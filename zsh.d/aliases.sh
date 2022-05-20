@@ -70,6 +70,8 @@ fi
 
 if hash spin 2>/dev/null; then
     alias ss='spin shell'
+    alias sc='spin code'
+    alias scs='spin code -l shopify--shopify'
 fi
 
 alias br='bin/rails'
