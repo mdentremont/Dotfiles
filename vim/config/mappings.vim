@@ -38,7 +38,7 @@ if !exists('g:vscode')
 endif
 
 " Fast saving {{{
-nmap <leader>w :w!<cr>
+nmap <leader>w :w<cr>
 " }}}
 
 " Fast editing of vimrc {{{
