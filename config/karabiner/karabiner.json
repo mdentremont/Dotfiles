@@ -16,9 +16,9 @@
                 },
                 "rules": [
                     {
+                        "description": "Change caps_lock to control+option+shift.",
                         "manipulators": [
                             {
-                                "description": "Change caps_lock to command+control+option+shift.",
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
@@ -31,7 +31,6 @@
                                     {
                                         "key_code": "left_shift",
                                         "modifiers": [
-                                            "left_command",
                                             "left_control",
                                             "left_option"
                                         ]
@@ -43,9 +42,13 @@
                                     }
                                 ],
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change esc to control+option+shift.",
+                        "manipulators": [
                             {
-                                "description": "Change esc to command+control+option+shift.",
                                 "from": {
                                     "key_code": "escape",
                                     "modifiers": {
@@ -58,7 +61,6 @@
                                     {
                                         "key_code": "left_shift",
                                         "modifiers": [
-                                            "left_command",
                                             "left_control",
                                             "left_option"
                                         ]
@@ -70,63 +72,6 @@
                                     }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Disable Command-Shift-Option-Control-Period (.)",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "period",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command",
-                                            "shift",
-                                            "option",
-                                            "control"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Disable Command-Shift-Option-Control-Comma (,)",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "comma",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command",
-                                            "shift",
-                                            "option",
-                                            "control"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Disable Command-Shift-Option-Control-Forward-Slash (/)",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "/",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command",
-                                            "shift",
-                                            "option",
-                                            "control"
-                                        ]
-                                    }
-                                }
                             }
                         ]
                     }
