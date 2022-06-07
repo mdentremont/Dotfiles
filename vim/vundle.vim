@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/bundle')
 
 Plug 'scrooloose/nerdcommenter'
-Plug 'tpop/vim-surround'
+Plug 'tpope/vim-surround'
 
 if exists('g:vscode')
     call plug#end()
