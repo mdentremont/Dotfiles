@@ -69,10 +69,14 @@ if hash git 2>/dev/null; then
 fi
 
 if hash spin 2>/dev/null; then
-    alias ss='spin shell'
     alias sc='spin code'
+    alias scl='spin code -l'
     alias scs='spin code -l shopify--shopify'
-    alias so='spin open'
+    alias scw='spin code -l shopify--checkout-web'
+	alias so='spin open'
+	alias sol='spin open -l'
+    alias ss='spin shell'
+    alias ssl='spin shell -l'
 fi
 
 alias br='bin/rails'
