@@ -1,12 +1,12 @@
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
+" use <TAB> for trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<Tab>" :
+inoremap <silent><expr> <TAB>
+    \ coc#pum#visible() ? "\<C-n>" :
+    \ CheckBackspace() ? "\<Tab>" :
     \ coc#refresh()
 
 " use <c-space>for trigger completion
