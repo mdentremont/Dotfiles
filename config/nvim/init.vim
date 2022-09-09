@@ -57,6 +57,9 @@ endif
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Enable filetype plugin
+filetype plugin on
+
 if !exists('g:vscode')
     " Use bash for shells to avoid delays in zsh starting up
     if has('unix')
@@ -67,9 +70,6 @@ if !exists('g:vscode')
 
     " Hide a buffer instead of closing (don't lose unsaved changes!)
     set hidden
-
-    " Enable filetype plugin
-    filetype plugin on
 
     " Allow indentation to be filetype dependent
     filetype indent on
