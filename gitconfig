@@ -46,6 +46,7 @@
 	ps = push
 	r = rm
 	rb = rebase
+	rc = rebase --continue
 	s = status -sb
 	su = submodule update --init --recursive
 	t = tag
