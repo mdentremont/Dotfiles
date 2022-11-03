@@ -68,13 +68,19 @@ if hash git 2>/dev/null; then
     alias gs="git status -sb"
 fi
 
+if functions dev >/dev/null; then
+    alias dcd='dev cd'
+fi
+
 if hash spin 2>/dev/null; then
+    alias s='s'
+    alias sl='spin list'
     alias sc='spin code'
     alias scl='spin code -l'
     alias scs='spin code -l shopify--shopify'
     alias scw='spin code -l shopify--checkout-web'
-	alias so='spin open'
-	alias sol='spin open -l'
+    alias so='spin open'
+    alias sol='spin open -l'
     alias ss='spin shell'
     alias ssl='spin shell -l'
 fi
