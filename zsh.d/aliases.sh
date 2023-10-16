@@ -79,6 +79,7 @@ if hash spin 2>/dev/null; then
     alias scl='spin code -l'
     alias scs='spin code -l shopify--shopify'
     alias scw='spin code -l shopify--checkout-web'
+    alias scpw='spin code -l shopify--portable-wallets'
     alias so='spin open'
     alias sol='spin open -l'
     alias ss='spin shell'
