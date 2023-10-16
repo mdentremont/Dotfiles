@@ -85,6 +85,19 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 "nnoremap <C-k> k
 "nnoremap <C-j> j
 "map <C-a> 
+"
+" navigating VSCode tabs
+if exists('g:vscode')
+    map <C-h> :call WinMove('Left')<CR>
+    map <C-j> :call WinMove('Down')<CR>
+    map <C-k> :call WinMove('Up')<CR>
+    map <C-l> :call WinMove('Right')<CR>
+
+    " move to the window in the direction shown, or create a new window
+    function! WinMove(direction)
+        call VSCodeCall('workbench.action.focus' . a:direction . 'Group')
+    endfunction
+endif
 
 " Switch tabs
 " Note: I don't think I've ever used vim tabs, disabling for now so <C-T> can
