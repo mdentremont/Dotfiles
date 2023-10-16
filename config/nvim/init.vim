@@ -28,7 +28,7 @@ if has('gui_running')
     " Disable window key shortcuts
     set winaltkeys=no
 
-    if MySys() == "mac"
+    if MySys() == "mac" && !has('nvim')
         " Treat Alt/Option as meta in MacVim
         set macmeta
     endif
