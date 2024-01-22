@@ -8,6 +8,7 @@ tmux/plugins
 vim/bundle
 vim/colors
 vim/doc
+vim/.netrwhist
 config/configstore
 config/nvim/autoload
 *.pyc
