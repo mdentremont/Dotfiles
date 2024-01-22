@@ -137,7 +137,10 @@ set whichwrap+=<,>,h,l
 
 " Highlight cursor line and column
 set cursorline
-set cursorcolumn
+if !exists('g:vscode')
+    " Bugs out often in VSCodeNeovim+Spin
+    set cursorcolumn
+endif
 
 " Show relative line numbers
 if v:version > 703
