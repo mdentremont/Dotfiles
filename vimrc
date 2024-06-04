@@ -1,5 +1,5 @@
 set runtimepath=~/.vim,$VIMRUNTIME
 
 if !has("nvim")
-    source  ~/.config/nvim/init.vim
+    source  ~/.config/nvim/init.lua
 endif
