@@ -20,3 +20,21 @@ if vim.g.vscode then
     vim.fn.VSCodeCall("workbench.action.focus" .. direction .. "Group")
   end
 end
+
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected up" })
+
+-- keep cursor at beginning of line when joining lines
+map("n", "J", "mzJ`z", { desc = "Squash line up" })
+
+-- keep cursor in center when half page scrolling
+map("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
+
+-- keep cursor in center when jumping to next match
+map("n", "n", "nzzzv", { desc = "Jump to next match" })
+map("n", "N", "Nzzzv", { desc = "Jump to previous match" })
+
+-- delete to black hole register
+map("n", "<leader>d", '"_d', { desc = "Delete to black hole register" })
+map("v", "<leader>d", '"_d', { desc = "Delete to black hole register" })
