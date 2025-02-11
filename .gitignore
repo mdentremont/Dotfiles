@@ -5,10 +5,11 @@ ssh/keys
 ssh/known_hosts
 tmux/plugins
 !tmux/plugins/tpm
+vim/.netrwhist
 vim/bundle
 vim/colors
 vim/doc
-vim/.netrwhist
+vim/undodir
 config/configstore
 config/nvim/autoload
 *.pyc
