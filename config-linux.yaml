@@ -52,28 +52,6 @@ dotfiles:
   tmux.conf:
     dst: ~/.tmux.conf
     src: tmux.conf
-  vim:
-    dst: ~/.vim
-    src: vim
-    link: link_children
-    cmpignore:
-    - backup
-    - bundle
-    - colors
-    - doc
-    upignore:
-    - backup
-    - bundle
-    - colors
-    - doc
-    instignore:
-    - backup
-    - bundle
-    - colors
-    - doc
-  vimrc:
-    dst: ~/.vimrc
-    src: vimrc
   zgenomrc:
     dst: ~/.zgenomrc
     src: zgenomrc
@@ -89,13 +67,8 @@ dotfiles:
   nvim:
     dst: ~/.config/nvim
     src: config/nvim
-  nvim-autoload:
-    dst: ~/.config/nvim/autoload
-    src: vim/autoload
-    upignore:
-    - '*'
 profiles:
-  Matts-MacBook-Pro.local:
+  Matts-MBP:
     dotfiles:
     - ALL
   spin:
