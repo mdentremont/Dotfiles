@@ -13,7 +13,6 @@ path=(
     $path
 )
 
-
 export LESS='-I -R'
 
 export PATH

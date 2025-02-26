@@ -15,7 +15,6 @@ if ! zgenom saved; then
   zgenom load mdentremont/zsh-vim-mode
   zgenom ohmyzsh plugins/vi-mode
   zgenom ohmyzsh plugins/ripgrep
-  zgenom ohmyzsh plugins/fzf
 
   zgenom load zsh-users/zsh-completions
   zgenom load zsh-users/zsh-history-substring-search
@@ -23,6 +22,7 @@ if ! zgenom saved; then
 
   hash brew 2>/dev/null && zgenom ohmyzsh plugins/brew
 
+  zgenom load Aloxaf/fzf-tab
   zgenom load mdentremont/girazz girazz.zsh-theme
 
   zgenom save
