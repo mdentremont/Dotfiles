@@ -1,124 +1,151 @@
-[core]
-	autocrlf = input
-	editor = nvim
-	excludesfile = ~/.gitignore_global
-	fileMode = false
-	safecrlf = false
-	pager = delta --24-bit-color=always --dark --keep-plus-minus-markers
-[delta]
-	plus-color = "#012800"
-	minus-color = "#340001"
-	syntax-theme = Monokai Extended Origin
-[interactive]
-	diffFilter = delta --24-bit-color=always --dark --color-only --keep-plus-minus-markers
-[user]
-	email = matt.dentremont@shopify.com
-	name = Matt d'Entremont
-[gui]
-	gcwarning = false
-	commitmsgwidth = 80
-	tabsize = 4
 [alias]
-	a = add
-	b = branch
-	bv = branch -vv
-	ci = commit -v
-	clf = clean -dfx -e '.gradle' -e 'gradle.properties' -e 'local.properties' -e '.idea' -e '*.iml'
-	co = checkout
-	cp = cherry-pick
-	cpx = cherry-pick -x
-	d = diff
-	dc = diff --cached
-	dt = difftool
-	dtc = difftool --cached
-	f = fetch --prune
-	fpr = "!git-fpr"
-	fa = fetch --all --prune
-	fixup = commit --amend --no-edit
-	l = log
-	lg = log --graph
-	lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	lost = "!git-lost"
-	m = merge
-	mt = mergetool
-	pl = pull
-	pr = pull-request
-	ps = push
-	r = rm
-	rb = rebase
-	rc = rebase --continue
-	s = status -sb
-	su = submodule update --init --recursive
-	t = tag
-	ws = diff --check
-	wt = worktree
-	desk = stash
-	wip = "!git-wip"
-	unwip = "!git-unwip"
-	head = !git log -n1
-	find-merge = "!git-find-merge"
-	clearvs = clean -dX -f -- 'TG*/bin' 'TG*/obj'
+  a = add
+  b = branch
+  bv = branch -vv
+  ci = commit -v
+  clf = clean -dfx -e '.gradle' -e 'gradle.properties' -e 'local.properties' -e '.idea' -e '*.iml'
+  co = checkout
+  cp = cherry-pick
+  cpx = cherry-pick -x
+  d = diff
+  dc = diff --cached
+  dt = difftool
+  dtc = difftool --cached
+  f = fetch --prune
+  fpr = "!git-fpr"
+  fa = fetch --all --prune
+  fixup = commit --amend --no-edit
+  l = log
+  lg = log --graph
+  lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lost = "!git-lost"
+  m = merge
+  mt = mergetool
+  pl = pull
+  pr = pull-request
+  ps = push
+  r = rm
+  rb = rebase
+  rc = rebase --continue
+  s = status -sb
+  su = submodule update --init --recursive
+  t = tag
+  ws = diff --check
+  wt = worktree
+  desk = stash
+  wip = "!git-wip"
+  unwip = "!git-unwip"
+  head = !git log -n1
+  find-merge = "!git-find-merge"
+  clearvs = clean -dX -f -- 'TG*/bin' 'TG*/obj'
+
 [branch]
   sort = -committerdate
-[tag]
-  sort = version:refname
-[rerere]
-	enabled = 1
-[push]
-	default = nothing
+
 [color]
-	ui = 1
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+  ui = 1
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
+[core]
+  autocrlf = input
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+  fileMode = false
+  safecrlf = false
+  pager = delta --24-bit-color=always --dark --keep-plus-minus-markers
+
+[delta]
+  plus-color = "#012800"
+  minus-color = "#340001"
+  syntax-theme = Monokai Extended Origin
+
 [diff]
-	tool = bc-windows
+  tool = bc-windows
   algorithm = histogram
   colorMoved = plain
   mnemonicPrefix = true
   renames = true
+
 [difftool]
-	prompt = false
+  prompt = false
+
 [difftool "bc-windows"]
-	cmd = bcomp -automerge \"$LOCAL\" \"$REMOTE\"
-[help]
-  autocorrect = prompt
-[merge]
-	tool = bc-windows
-	guitool = bc-windows
-[mergetool]
-	prompt = false
-	keepBackup = false
-[mergetool "bc-windows"]
-	keepBackup = false
-	trustExitCode = true
-	cmd = bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
-[mergetool "auto"]
-	keepBackup = false
-	trustExitCode = true
-	cmd = bcomp -automerge -ignoreunimportant -reviewconflicts \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
-[grep]
-	lineNumber = true
-	trustExitCode = true
-[hub]
-	protocol = https
-[log]
-	date = local
-[pull]
-	rebase = false
+  cmd = bcomp -automerge \"$LOCAL\" \"$REMOTE\"
+
 [fetch]
-	prune = true
+  prune = true
   pruneTags = true
   all = true
-[rebase]
-	autoStash = false
-[init]
-    defaultBranch = main
-[include]
-	path = /Users/mattdentremont/.config/dev/gitconfig
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[grep]
+  lineNumber = true
+  trustExitCode = true
+
+[gui]
+  gcwarning = false
+  commitmsgwidth = 80
+  tabsize = 4
+
+[help]
+  autocorrect = prompt
+
+[hub]
+  protocol = https
+
+[include]
+  path = /Users/mattdentremont/.config/dev/gitconfig
+
+[init]
+  defaultBranch = main
+
+[interactive]
+  diffFilter = delta --24-bit-color=always --dark --color-only --keep-plus-minus-markers
+
+[log]
+  date = local
+
+[merge]
+  tool = bc-windows
+  guitool = bc-windows
+
+[mergetool]
+  prompt = false
+  keepBackup = false
+
+[mergetool "auto"]
+  keepBackup = false
+  trustExitCode = true
+  cmd = bcomp -automerge -ignoreunimportant -reviewconflicts \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+
+[mergetool "bc-windows"]
+  keepBackup = false
+  trustExitCode = true
+  cmd = bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+
+[pull]
+  rebase = false
+
+[push]
+  default = nothing
+
+[rebase]
+  autoStash = false
+
+[rerere]
+  enabled = 1
+
+[tag]
+  sort = version:refname
+
+[user]
+  email = matt.dentremont@shopify.com
+  name = Matt d'Entremont
