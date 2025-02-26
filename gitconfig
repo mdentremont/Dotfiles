@@ -58,6 +58,10 @@
 	head = !git log -n1
 	find-merge = "!git-find-merge"
 	clearvs = clean -dX -f -- 'TG*/bin' 'TG*/obj'
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
 [rerere]
 	enabled = 1
 [push]
@@ -70,10 +74,16 @@
 	status = auto
 [diff]
 	tool = bc-windows
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [difftool]
 	prompt = false
 [difftool "bc-windows"]
 	cmd = bcomp -automerge \"$LOCAL\" \"$REMOTE\"
+[help]
+  autocorrect = prompt
 [merge]
 	tool = bc-windows
 	guitool = bc-windows
@@ -98,7 +108,9 @@
 [pull]
 	rebase = false
 [fetch]
-	prune = false
+	prune = true
+  pruneTags = true
+  all = true
 [rebase]
 	autoStash = false
 [init]
