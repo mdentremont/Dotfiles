@@ -67,6 +67,9 @@ dotfiles:
   nvim:
     dst: ~/.config/nvim
     src: config/nvim
+  wezterm:
+    dst: ~/.config/wezterm
+    src: config/wezterm
 profiles:
   Matts-MBP:
     dotfiles:
