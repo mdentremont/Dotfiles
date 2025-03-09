@@ -10,33 +10,19 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+    },
+
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.vscode" },
+
     -- import/override with your plugins
     { import = "plugins" },
-    -- tmux support
-    {
-      "christoomey/vim-tmux-navigator",
-      cmd = {
-        "TmuxNavigateLeft",
-        "TmuxNavigateDown",
-        "TmuxNavigateUp",
-        "TmuxNavigateRight",
-        "TmuxNavigatePrevious",
-        "TmuxNavigatorProcessList",
-      },
-      keys = {
-        { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-        { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-        { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-        { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-        { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-      },
-    },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
