@@ -1,36 +1,24 @@
 # ZSH aliases
 
-if [[ `uname` != 'Darwin' ]]
+if hash eza 2>/dev/null; then
+    alias ls=eza
+elif [[ `uname` != 'Darwin' ]]
 then
     alias ls='ls --color'
 fi
 alias o='open "$@"'
 
 if hash nvim 2>/dev/null; then
+    alias v=nvim
     alias vi=nvim
     alias vim=nvim
 else
+    alias v=vim
     alias vi=vim
-fi
-
-if hash docker 2>/dev/null; then
-    alias docker-volume-cleanup='docker volume rm $(docker volume ls -qf dangling=true)'
-    alias d='docker'
-    alias dc='docker-compose'
-    alias dm='docker-machine'
 fi
 
 if hash fuck 2>/dev/null; then
   eval $(thefuck --alias)
-fi
-
-# Fix ag colours
-alias ag='ag --color-line="0;33" --color-path="0;32"'
-
-# Alias gv to gvim if it exists
-if hash gvim 2>/dev/null; then
-    function gv { ( gvim -f "$@" & ) &>/dev/null ; }
-    compdef gv=gvim
 fi
 
 qf() {
