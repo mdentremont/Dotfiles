@@ -1,75 +1,39 @@
-if test -f /opt/dev/dev.fish
-  source /opt/dev/dev.fish
-end
-
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
     fish -c fisher
 end
 
-if test (uname) != Darwin
+if test -f /opt/dev/dev.fish
+    source /opt/dev/dev.fish
+end
+
+if type -q bat
+    abbr cat bat
+end
+
+if type -q dev
+    abbr dcd dev cd
+end
+
+if type -q eza
+    abbr ls eza
+else if test (uname) != Darwin
     abbr ls ls --color
 end
-
-if type -q ember
-    abbr e ember
-end
-
-#if type -q docker
-#    abbr docker-volume-cleanup docker volume rm (docker volume ls -qf dangling=true)
-#    abbr d docker
-#    abbr dc docker-compose
-#    abbr dm docker-machine
-#
-#    if uname -a | grep -q 'Microsoft'
-#        # wsl docker
-#        set -x DOCKER_HOST tcp://localhost:2375
-#    end
-#end
 
 if type -q fuck
     set -x THEFUCK_OVERRIDDEN_ALIASES 'apt-get,ag,git'
     function update_the_fuck
-        thefuck --alias > ~/.config/fish/functions/fuck.fish
+        thefuck --alias >~/.config/fish/functions/fuck.fish
         source ~/.config/fish/functions/fuck.fish
     end
 end
 
-# Use ripgrep instead of silver searcher
-abbr ag rg
-
-# Alias gv to gvim if it exists
-if type -q gvim
-    function gv
-        gvim -f "$argv" >/dev/null 2>&1 &
-    end
-    compdef gv=gvim
-end
-
-# Only set git aliases if git exists
 if type -q git
     abbr g git
-
-    abbr a git add
-    abbr b git branch
-    abbr co git checkout
-    abbr d git diff
-    abbr dc git diff --cached
-    abbr gg cmd.exe /c start \"\" \"C:\\Program Files\\Git\\cmd\\git-gui.exe\"
     abbr gs git status
-    abbr f git fetch --prune
-    abbr fa git fetch --all --prune
-    abbr l git l
-    abbr lp git lp
-    abbr mt git mergetool
-    abbr m git merge
-    abbr r git reset
-    abbr s git status -sb
-    abbr stash git desk
-
-    abbr wip git wip
-    abbr unwip git unwip
+    abbr gl git log
 
     function git_cleanup_branches
         git fetch; and git_merged_branches | cut -d/ -f2- | xargs --no-run-if-empty --max-args=1 git branch -D
@@ -83,11 +47,11 @@ if type -q git
         git for-each-ref --format='%(refname)' refs/remotes/origin/bugfix refs/remotes/origin/utilities refs/remotes/origin/rc refs/remotes/origin/feature/ refs/remotes/origin/hotfix/ refs/remotes/origin/rc/ refs/remotes/origin/bugfixdrop refs/remotes/origin/misc/high refs/remotes/origin/misc/low refs/remotes/origin/misc/drop refs/remotes/origin/misc/test 2>/dev/null | sed 's|^refs/remotes/origin/||'
     end
 
-    function git_merged_branches --argument-names 'remoteSwitch'
-        if test "$remoteSwitch" = "-r"
-            set refs "refs/remotes/"
+    function git_merged_branches --argument-names remoteSwitch
+        if test "$remoteSwitch" = -r
+            set refs refs/remotes/
         else
-            set refs "refs/heads"
+            set refs refs/heads
         end
         get_remote_target_branches | while read target_branch
             git for-each-ref --format='%(refname:short)' "--merged=origin/$target_branch" $refs 2>/dev/null
@@ -104,34 +68,33 @@ if type -q git
     end
 end
 
-if uname -a | grep -q 'Microsoft'
-    set -x BROWSER "win-start"
-    set fish_term24bit 1
-
-    set -g WIN_HOME /mnt/c/Users/matt.dentremont
-    set -g DESKTOP $WIN_HOME/Desktop
-
-    abbr src cd $WIN_HOME/git/intellitrack-service
-    abbr rel cd $WIN_HOME/git/intellitrack-service-release
-    abbr other cd $WIN_HOME/git/intellitrack-service-other
-    abbr core cd $WIN_HOME/git/intellitrack-service-core
-    abbr desk cd $DESKTOP
-
-    alias gh=gh.exe
+if type -q nvim
+    abbr v nvim
+    abbr vi nvim
+    abbr vim nvim
 end
 
-abbr bat batcat
-abbr v nvim
-abbr vi nvim
-abbr vim nvim
+if type -q spin
+    abbr s s
+    abbr sl spin list
+    abbr sc spin code
+    abbr scl spin code -l
+    abbr scs spin code -l shop--world//areas/core/shopify
+    abbr scw spin code -l shop--world//areas/clients/checkout-web
+    abbr scpw spin code -l shopify--portable-wallets
+    abbr so spin open
+    abbr sol spin open -l
+    abbr ss spin shell
+    abbr ssl spin shell -l
+end
 
-set -U fish_user_paths ~/bin ~/.local/bin $fish_user_paths
+fish_config prompt choose Astronaut
+
+set fish_greeting
+
+set -U fish_user_paths ~/bin ~/.local/bin /opt/homebrew/bin/ $fish_user_paths
 
 fish_vi_key_bindings
-
-# oh-my-fish/theme-bobthefish
-set -g theme_display_git_dirty no
-set -g theme_display_git_untracked no
 
 # case insensitive less search
 set -x LESS '-I -R'
