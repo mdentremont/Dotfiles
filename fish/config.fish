@@ -88,8 +88,6 @@ if type -q spin
     abbr ssl spin shell -l
 end
 
-fish_config prompt choose Astronaut
-
 set fish_greeting
 
 set -U fish_user_paths ~/bin ~/.local/bin /opt/homebrew/bin/ $fish_user_paths
