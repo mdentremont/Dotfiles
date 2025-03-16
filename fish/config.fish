@@ -90,7 +90,7 @@ end
 
 set fish_greeting
 
-set -U fish_user_paths ~/bin ~/.local/bin /opt/homebrew/bin/ $fish_user_paths
+set -U fish_user_paths ~/bin ~/.local/bin /usr/local/bin /opt/homebrew/bin/ $fish_user_paths
 
 fish_vi_key_bindings
 
