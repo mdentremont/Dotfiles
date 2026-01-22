@@ -4,22 +4,29 @@ if not functions -q fisher
     fish -c fisher
 end
 
-if test -f /opt/dev/dev.fish
-    source /opt/dev/dev.fish
+if not status --is-interactive
+    return
+end
+
+if test -d ~/.local/state/tec/profiles/base/current/global
+    # tec imports at the bottom of the file will take care of the aliasing
+    # todo: might be nice to have wcd be running eza under the hood so that arguments are consistent
+
+    abbr dcd dev cd
+    set -x GH_TOKEN (DEV_NO_AUTO_UPDATE=1 /opt/dev/bin/dev github print-auth --password)
+
+    abbr jicw wji checkout-web
+    abbr jis wji shopify
+    abbr jipw wji portable-wallets
+    abbr jisfr wji storefront
+else if type -q eza
+    abbr ls eza
+else if test (uname) != Darwin
+    abbr ls ls --color
 end
 
 if type -q bat
     abbr cat bat
-end
-
-if type -q dev
-    abbr dcd dev cd
-end
-
-if type -q eza
-    abbr ls eza
-else if test (uname) != Darwin
-    abbr ls ls --color
 end
 
 if type -q fuck
@@ -32,67 +39,85 @@ end
 
 if type -q git
     abbr g git
+    abbr gd git diff
     abbr gs git status
     abbr gl git log
-
-    function git_cleanup_branches
-        git fetch; and git_merged_branches | cut -d/ -f2- | xargs --no-run-if-empty --max-args=1 git branch -D
-    end
-
-    function git_cleanup_remote_branches
-        git fetch; and git_merged_branches -r | sed -e 's|^origin/||' -e "s|'|\\\\'|" | xargs --no-run-if-empty --max-args=1 git push --delete origin
-    end
-
-    function get_remote_target_branches
-        git for-each-ref --format='%(refname)' refs/remotes/origin/bugfix refs/remotes/origin/utilities refs/remotes/origin/rc refs/remotes/origin/feature/ refs/remotes/origin/hotfix/ refs/remotes/origin/rc/ refs/remotes/origin/bugfixdrop refs/remotes/origin/misc/high refs/remotes/origin/misc/low refs/remotes/origin/misc/drop refs/remotes/origin/misc/test 2>/dev/null | sed 's|^refs/remotes/origin/||'
-    end
-
-    function git_merged_branches --argument-names remoteSwitch
-        if test "$remoteSwitch" = -r
-            set refs refs/remotes/
-        else
-            set refs refs/heads
-        end
-        get_remote_target_branches | while read target_branch
-            git for-each-ref --format='%(refname:short)' "--merged=origin/$target_branch" $refs 2>/dev/null
-        end | sort -u | grep -vE '(^|/)(rc/.*|bugfix|bugfixdrop|feature/.*|misc/.*|production|master|rc|rc-next|translations|utilities|hotfix|HEAD)$'
-    end
-
-    function git_cleanup_old_branches
-        git fetch
-        for branch in (git branch -r --no-merged origin/production | cut -d/ -f2- | grep -v -e '^production' -e '^bugfix' -e '^itk-release' -e '^utilities' -e '^feature/' -e '^hotfix/' -e '^qa-drop' -e '^misc/*' )
-            if [ -z "(git log -1 --since='6 month ago' -s origin/$branch)" ]
-                git push --delete origin $branch
-            end
-        end
-    end
 end
 
 if type -q nvim
     abbr v nvim
     abbr vi nvim
     abbr vim nvim
+
+    # This is the rare case where if some reason the abbr doesn't expand, I don't want it to run the real command
+    alias vi nvim
+    alias vim nvim
 end
 
-if type -q spin
-    abbr s s
-    abbr sl spin list
-    abbr sc spin code
-    abbr scl spin code -l
-    abbr scs spin code -l shop--world//areas/core/shopify
-    abbr scw spin code -l shop--world//areas/clients/checkout-web
-    abbr scpw spin code -l shopify--portable-wallets
-    abbr so spin open
-    abbr sol spin open -l
-    abbr ss spin shell
-    abbr ssl spin shell -l
+if type -q claude
+    set -x CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY 1
+    abbr claude "claude update && claude --dangerously-skip-permissions"
+    abbr claudex "npx -y shopify-playground/claudex --open"
 end
 
 set fish_greeting
 
-set -U fish_user_paths ~/bin ~/.local/bin /usr/local/bin /opt/homebrew/bin/ $fish_user_paths
+# Catppuccin Mocha theme colors (migrated from Fish 4.3 universal variables)
+set -g fish_color_autosuggestion 6c7086
+set -g fish_color_cancel f38ba8
+set -g fish_color_command 89b4fa
+set -g fish_color_comment 7f849c
+set -g fish_color_cwd f9e2af
+set -g fish_color_cwd_root red
+set -g fish_color_end fab387
+set -g fish_color_error f38ba8
+set -g fish_color_escape eba0ac
+set -g fish_color_gray 6c7086
+set -g fish_color_history_current --bold
+set -g fish_color_host 89b4fa
+set -g fish_color_host_remote a6e3a1
+set -g fish_color_keyword f38ba8
+set -g fish_color_normal cdd6f4
+set -g fish_color_operator f5c2e7
+set -g fish_color_option a6e3a1
+set -g fish_color_param f2cdcd
+set -g fish_color_quote a6e3a1
+set -g fish_color_redirection f5c2e7
+set -g fish_color_search_match --background=313244
+set -g fish_color_selection --background=313244
+set -g fish_color_status f38ba8
+set -g fish_color_user 94e2d5
+set -g fish_color_valid_path --underline
+set -g fish_pager_color_background
+set -g fish_pager_color_completion cdd6f4
+set -g fish_pager_color_description 6c7086
+set -g fish_pager_color_prefix f5c2e7
+set -g fish_pager_color_progress 6c7086
+set -g fish_pager_color_secondary_background
+set -g fish_pager_color_secondary_completion
+set -g fish_pager_color_secondary_description
+set -g fish_pager_color_secondary_prefix
+set -g fish_pager_color_selected_background
+set -g fish_pager_color_selected_completion
+set -g fish_pager_color_selected_description
+set -g fish_pager_color_selected_prefix
 
-fish_vi_key_bindings
+#fish_add_path -p \
+#    /nix/var/nix/profiles/default/bin \
+#    ~/.nix-profile/bin \
+#    ~/.dev/userprofile/bin \
+#    ~/.dev/binaries \
+#    ~/bin \
+#    ~/.local/bin \
+#    /usr/local/bin \
+#    /opt/homebrew/bin/
+
+function fish_user_key_bindings
+    fish_vi_key_bindings
+end
 
 # case insensitive less search
 set -x LESS '-I -R'
+
+# Added by tec agent
+test -x /Users/mattdentremont/.local/state/tec/profiles/base/current/global/init && /Users/mattdentremont/.local/state/tec/profiles/base/current/global/init fish | source
