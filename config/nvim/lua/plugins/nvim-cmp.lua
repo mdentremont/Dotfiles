@@ -10,6 +10,10 @@ return {
 
     local cmp = require("cmp")
     opts.mapping = vim.tbl_extend("force", opts.mapping, {
+      -- Disable Enter for accepting completions (use Tab instead)
+      ["<CR>"] = cmp.mapping(function(fallback)
+        fallback()
+      end, { "i", "s" }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm({ select = true })
