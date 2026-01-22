@@ -70,10 +70,15 @@ dotfiles:
   wezterm:
     dst: ~/.config/wezterm
     src: config/wezterm
+  d_karabiner:
+    src: config/karabiner
+    dst: ~/.config/karabiner
+    chmod: '700'
 profiles:
   Matts-MBP:
     dotfiles:
     - ALL
+    - d_karabiner
   spin:
     dotfiles:
     - ALL
