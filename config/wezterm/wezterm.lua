@@ -1,3 +1,5 @@
+local wezterm = require("wezterm")
+
 return {
 	color_scheme = "Catppuccin Mocha",
 
@@ -9,6 +11,8 @@ return {
 	},
 
 	enable_tab_bar = false,
+
+	font = wezterm.font("FiraCode Nerd Font Mono"),
 
 	initial_cols = 600,
 	initial_rows = 200,
