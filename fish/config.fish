@@ -55,9 +55,7 @@ if type -q nvim
 end
 
 if type -q claude
-    set -x CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY 1
-    abbr claude "claude update && claude --dangerously-skip-permissions"
-    abbr claudex "npx -y shopify-playground/claudex --open"
+    abbr claude "claude --dangerously-skip-permissions"
 end
 
 set fish_greeting
