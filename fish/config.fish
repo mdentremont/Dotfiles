@@ -13,7 +13,7 @@ if test -d ~/.local/state/tec/profiles/base/current/global
     # todo: might be nice to have wcd be running eza under the hood so that arguments are consistent
 
     abbr dcd dev cd
-    set -x GH_TOKEN (DEV_NO_AUTO_UPDATE=1 /opt/dev/bin/dev github print-auth --password)
+    set -x GH_TOKEN (/opt/dev/bin/dev github print-auth --password)
 
     abbr jicw wji checkout-web
     abbr jis wji shopify
