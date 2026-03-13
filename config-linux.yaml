@@ -77,12 +77,16 @@ dotfiles:
   d_pi:
     src: pi
     dst: ~/.pi
+  d_tmux:
+    src: tmux
+    dst: ~/.tmux
 profiles:
   Matts-MBP:
     dotfiles:
     - ALL
     - d_karabiner
     - d_pi
+    - d_tmux
   spin:
     dotfiles:
     - ALL
