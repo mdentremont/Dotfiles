@@ -117,5 +117,7 @@ end
 # case insensitive less search
 set -x LESS '-I -R'
 
+set -x EDITOR nvim
+
 # Added by tec agent
 test -x /Users/mattdentremont/.local/state/tec/profiles/base/current/global/init && /Users/mattdentremont/.local/state/tec/profiles/base/current/global/init fish | source
