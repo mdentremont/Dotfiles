@@ -1,4 +1,5 @@
 import type {ExtensionAPI, ExtensionContext} from '@mariozechner/pi-coding-agent';
+import type {AssistantMessage} from '@mariozechner/pi-ai';
 import {truncateToWidth, visibleWidth} from '@mariozechner/pi-tui';
 
 export default function (pi: ExtensionAPI) {
@@ -44,9 +45,34 @@ export default function (pi: ExtensionAPI) {
         render(width: number): string[] {
           const left = theme.fg('dim', worldPath || ctx.cwd);
 
+          // Compute token stats from session history
+          let totalInput = 0,
+            totalOutput = 0,
+            totalCost = 0,
+            lastInput = 0;
+          for (const e of ctx.sessionManager.getBranch()) {
+            if (e.type === 'message' && e.message.role === 'assistant') {
+              const m = e.message as AssistantMessage;
+              totalInput += m.usage.input;
+              totalOutput += m.usage.output;
+              totalCost += m.usage.cost.total;
+              lastInput = m.usage.input;
+            }
+          }
+
+          const fmt = (n: number) => (n < 1000 ? `${n}` : `${(n / 1000).toFixed(1)}k`);
+          const totalTokens = totalInput + totalOutput;
+          const ctxPct =
+            ctx.model?.contextWindow && lastInput > 0
+              ? `${Math.round((lastInput / ctx.model.contextWindow) * 100)}%`
+              : null;
+
           const statuses = [...footerData.getExtensionStatuses().values()].filter(Boolean);
           const rightParts = [
             ...statuses,
+            ctxPct,
+            totalTokens > 0 ? fmt(totalTokens) : null,
+            totalCost > 0 ? `$${totalCost.toFixed(3)}` : null,
             ctx.model?.id || 'no-model',
             worldBranch ? `(${worldBranch})` : '',
           ].filter(Boolean);
