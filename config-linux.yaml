@@ -74,11 +74,15 @@ dotfiles:
     src: config/karabiner
     dst: ~/.config/karabiner
     chmod: '700'
+  d_pi:
+    src: pi
+    dst: ~/.pi
 profiles:
   Matts-MBP:
     dotfiles:
     - ALL
     - d_karabiner
+    - d_pi
   spin:
     dotfiles:
     - ALL

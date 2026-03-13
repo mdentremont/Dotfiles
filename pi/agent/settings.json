@@ -1,0 +1,19 @@
+{
+  "lastChangelogVersion": "0.57.1",
+  "hideThinkingBlock": false,
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-sonnet-4-6",
+  "extensions": [
+    "/Users/mattdentremont/.pi/agent/extensions/worldpath-footer.ts",
+    "/Users/mattdentremont/.pi/agent/extensions/fzf-file-autocomplete.ts"
+  ],
+  "packages": [
+    {
+      "source": "https://github.com/shopify-playground/shop-pi-fy",
+      "skills": [],
+      "prompts": [],
+      "themes": []
+    }
+  ],
+  "defaultThinkingLevel": "high"
+}
