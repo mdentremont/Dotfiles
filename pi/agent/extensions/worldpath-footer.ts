@@ -48,23 +48,23 @@ export default function (pi: ExtensionAPI) {
           // Compute token stats from session history
           let totalInput = 0,
             totalOutput = 0,
-            totalCost = 0,
-            lastInput = 0;
+            totalCost = 0;
           for (const e of ctx.sessionManager.getBranch()) {
             if (e.type === 'message' && e.message.role === 'assistant') {
               const m = e.message as AssistantMessage;
               totalInput += m.usage.input;
               totalOutput += m.usage.output;
               totalCost += m.usage.cost.total;
-              lastInput = m.usage.input;
             }
           }
 
           const fmt = (n: number) => (n < 1000 ? `${n}` : `${(n / 1000).toFixed(1)}k`);
           const totalTokens = totalInput + totalOutput;
+
+          const ctxUsage = ctx.getContextUsage();
           const ctxPct =
-            ctx.model?.contextWindow && lastInput > 0
-              ? `${Math.round((lastInput / ctx.model.contextWindow) * 100)}%`
+            ctxUsage?.percent != null
+              ? `${Math.round(ctxUsage.percent)}%`
               : null;
 
           const statuses = [...footerData.getExtensionStatuses().values()].filter(Boolean);
